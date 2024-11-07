@@ -8,11 +8,11 @@ const RecipeCard = ({ recipe }) => {
 
   return (
     <div className="card-container">
+      <Difficulty difficulty={recipe.difficulty} />
       <div className="card-img-container">
         <img src={recipe.photo} alt={recipe.name} />
-        <p className="recipe-meal">{recipe.meal}</p>
-        <Difficulty difficulty={recipe.difficulty} />
       </div>
+      <p className="recipe-meal">{recipe.meal}</p>
       <div className="card-info">
         <h4>{recipe.name}</h4>
         <div className="card-more-info">
