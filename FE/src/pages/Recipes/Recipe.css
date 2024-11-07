@@ -1,0 +1,6 @@
+.recipes-container {
+  display: flex;
+  gap: var(--gap-xl);
+  flex-wrap: wrap;
+  justify-content: center;
+}

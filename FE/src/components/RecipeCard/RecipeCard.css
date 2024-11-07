@@ -1,0 +1,67 @@
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-m);
+  max-width: 400px;
+  width: 400px;
+  background-color: var(--color-text-primary);
+}
+
+.card-container p {
+  color: var(--color-surface-a0);
+}
+
+.card-img-container {
+  height: 350px;
+  position: relative;
+}
+
+.card-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-container .recipe-meal {
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
+  background-color: var(--color-primary-a50);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  padding: var(--padding-xs);
+}
+
+.card-container h4 {
+  color: var(--color-surface-a0);
+  text-transform: capitalize;
+  font-size: var(--font-size-l);
+}
+
+.card-container .card-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
+  padding: var(--padding-s);
+}
+
+.card-container .card-more-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-container .card-more-info #time {
+  width: 16px;
+  height: 16px;
+}
+
+.card-container .card-more-info .time-info {
+  display: flex;
+  gap: var(--gap-xs);
+  align-items: center;
+}
+
+.card-container .card-more-info .time-info p {
+  color: var(--color-surface-mixed-a50);
+}

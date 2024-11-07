@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Gaegu&family=Outfit:wght@100..900&family=Young+Serif&display=swap");
+
+:root {
+  --font-family-heading: "Young Serif", serif;
+  --font-family-text: "Outfit", serif;
+  --font-family-logo: "Gaegu", sans-serif;
+
+  --color-primary-a0: #006f4a;
+  --color-primary-a10: #007d58;
+  --color-primary-a20: #018b66;
+  --color-primary-a30: #019a74;
+  --color-primary-a40: #01a66f;
+  --color-primary-a50: #33d0a3;
+
+  --color-accent-a0: #a35b00;
+  --color-accent-a10: #b66d00;
+  --color-accent-a20: #c87f00;
+  --color-accent-a30: #da9100;
+  --color-accent-a40: #ffb703;
+  --color-accent-a50: #ffc046;
+
+  --color-surface-a0: #121212;
+  --color-surface-a10: #1e1e1e;
+  --color-surface-a20: #2a2a2a;
+  --color-surface-a30: #3a3a3a;
+  --color-surface-a40: #4a4a4a;
+  --color-surface-a50: #5a5a5a;
+
+  --color-surface-mixed-a0: #1c1f22;
+  --color-surface-mixed-a10: #2d3035;
+  --color-surface-mixed-a20: #3e4145;
+  --color-surface-mixed-a30: #4f5257;
+  --color-surface-mixed-a40: #606367;
+  --color-surface-mixed-a50: #727579;
+
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #e0e0e0;
+
+  --font-size-xs: 12px;
+  --font-size-s: 16px;
+  --font-size-m: 18px;
+  --font-size-l: 24px;
+  --font-size-xl: 32px;
+  --font-size-xxl: 48px;
+
+  --font-weight-regular: 400;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+
+  --spacing-xxs: 0.25rem;
+  --spacing-xs: 0.5rem;
+  --spacing-s: 1rem;
+  --spacing-m: 2rem;
+  --spacing-l: 3rem;
+  --spacing-xl: 4rem;
+  --spacing-xxl: 6rem;
+
+  --margin-xxs: var(--spacing-xxs);
+  --margin-xs: var(--spacing-xs);
+  --margin-s: var(--spacing-s);
+  --margin-m: var(--spacing-m);
+  --margin-l: var(--spacing-l);
+  --margin-xl: var(--spacing-xl);
+
+  --padding-xxs: var(--spacing-xxs);
+  --padding-xs: var(--spacing-xs);
+  --padding-s: var(--spacing-s);
+  --padding-m: var(--spacing-m);
+  --padding-l: var(--spacing-l);
+  --padding-xl: var(--spacing-xl);
+  --padding-xxl: var(--spacing-xxl);
+
+  --gap-xxs: var(--spacing-xxs);
+  --gap-xs: var(--spacing-xs);
+  --gap-s: var(--spacing-s);
+  --gap-m: var(--spacing-m);
+  --gap-l: var(--spacing-l);
+  --gap-xl: var(--spacing-xl);
+
+  --border-radius-xs: 4px;
+  --border-radius-s: 8px;
+  --border-radius-l: 16px;
+  --border-radius-xl: 50px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: var(--font-family-text);
+  background-color: var(--color-surface-a0);
+  color: var(--color-text-primary);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-family-heading);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}

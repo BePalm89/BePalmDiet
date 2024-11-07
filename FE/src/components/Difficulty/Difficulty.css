@@ -1,0 +1,16 @@
+.difficulty-container {
+  position: absolute;
+  top: 20px;
+  right: -15px;
+  background-color: var(--color-accent-a50);
+  padding: var(--padding-xxs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-xxs);
+}
+
+.difficulty-container #chef-hat {
+  width: 32px;
+  height: 32px;
+}
