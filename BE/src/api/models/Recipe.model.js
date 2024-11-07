@@ -51,7 +51,7 @@ const recipeSchema = new mongoose.Schema(
     photo: { type: String, required: true },
     meal: {
       type: String,
-      enum: ["Breakfast", "Lunch", "Dinner", "Break"],
+      enum: ["breakfast", "lunch", "dinner", "break"],
       required: true,
     },
     comments: { type: String, required: false },

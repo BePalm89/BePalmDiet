@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--gap-xxs);
+  z-index: 1;
 }
 
 .difficulty-container #chef-hat {

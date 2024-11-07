@@ -1,3 +1,10 @@
+.recipes-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-l);
+  padding: var(--padding-l) 0;
+}
+
 .recipes-container {
   display: flex;
   gap: var(--gap-xl);
