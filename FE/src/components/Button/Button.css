@@ -17,8 +17,13 @@
   color: var(--color-surface-a20);
 }
 
+.btn.secondary {
+  border: 1px solid var(--color-primary-a50);
+  color: var(--color-primary-a50);
+  background-color: var(--color-surface-a0);
+}
+
 .btn.disabled {
-  background-color: var(--color-primary-disabled);
+  opacity: 0.5;
   cursor: not-allowed;
-  color: var(--color-surface-a50);
 }

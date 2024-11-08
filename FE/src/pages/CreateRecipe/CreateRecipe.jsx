@@ -95,6 +95,7 @@ const CreateRecipe = () => {
             label="previous"
             onClick={handlePrev}
             disabled={activeStepIndex === 0}
+            variant="secondary"
           />
           <Button label="next" onClick={handleNext} disabled={!isFormValid} />
         </div>
