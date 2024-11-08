@@ -6,11 +6,17 @@ const Input = ({
   required = false,
   placeholder,
   value,
-  fcn,
+  fnc,
   type,
   icon,
   fcnIcon,
+  error,
 }) => {
+  const handleFileChange = (e) => {
+    const fileName = e.target.files[0]?.name || "No file chosen";
+    document.getElementById("file-chosen").textContent = fileName;
+  };
+
   return (
     <div className="form-item">
       {label && (
@@ -18,22 +24,41 @@ const Input = ({
           {label} {required ? " *" : ""}
         </label>
       )}
-      <div className="form-input">
-        <input
-          id={id}
-          type={type}
-          placeholder={placeholder}
-          value={value}
-          onChange={fcn}
-        />
-        {icon ? (
-          <div className="icon-container" onClick={fcnIcon}>
-            <img src={icon.img} alt={icon.value} />
+      {type === "text" ? (
+        <div className="form-input">
+          <input
+            id={id}
+            type={type}
+            placeholder={placeholder}
+            value={value}
+            onChange={fnc}
+            className={error ? "input-error" : ""}
+          />
+          {icon ? (
+            <div className="icon-container" onClick={fcnIcon}>
+              <img src={icon.img} alt={icon.value} />
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+      ) : (
+        <>
+          <input
+            type="file"
+            style={{ display: "none" }}
+            id={id}
+            onChange={handleFileChange}
+          />
+          <div>
+            <label className="custom-file" htmlFor={id}>
+              Choose file
+            </label>
+            <span id="file-chosen">No file chosen</span>
           </div>
-        ) : (
-          ""
-        )}
-      </div>
+        </>
+      )}
+      {error && <span className="error-message">{error}</span>}
     </div>
   );
 };

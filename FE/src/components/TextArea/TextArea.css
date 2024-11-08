@@ -14,3 +14,11 @@ textarea::placeholder {
   font-family: var(--font-family-text);
   color: var(--color-surface-a50);
 }
+
+.form-item textarea.input-error {
+  border: 2px solid var(--color-error-text);
+}
+
+.form-item textarea.input-error:focus {
+  border: 2px solid var(--color-error-text);
+}

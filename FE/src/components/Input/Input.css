@@ -16,8 +16,16 @@
   width: 100%;
 }
 
+.form-item input.input-error {
+  border: 2px solid var(--color-error-text);
+}
+
 .form-item input:focus {
   border: 2px solid var(--color-primary-a50);
+}
+
+.form-item input.input-error:focus {
+  border: 2px solid var(--color-error-text);
 }
 
 input::placeholder {
@@ -45,4 +53,27 @@ input::placeholder {
 .icon-container img {
   width: 32px;
   height: 32px;
+}
+
+.custom-file {
+  display: inline-block;
+  padding: var(--padding-xs) var(--padding-s);
+  cursor: pointer;
+  background-color: var(--color-primary-a50);
+  color: var(--white-color);
+  border-radius: var(--border-radius-s);
+  font-size: var(--font-size-s);
+  text-align: center;
+  border: none;
+  font-family: var(--font-family-heading);
+}
+
+#file-chosen {
+  margin-left: 10px;
+  font-size: var(--font-size-xs);
+  color: var(--gray-dark-color);
+}
+
+.error-message {
+  color: var(--color-error-text);
 }

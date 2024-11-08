@@ -37,6 +37,8 @@
   --color-text-primary: #ffffff;
   --color-text-secondary: #e0e0e0;
 
+  --color-error-text: #ff4d4d;
+
   --font-size-xs: 12px;
   --font-size-s: 16px;
   --font-size-m: 18px;
