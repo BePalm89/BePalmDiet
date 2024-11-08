@@ -20,5 +20,6 @@ header .active {
 }
 
 header nav ul li:hover {
+  color: var(--color-primary-a30);
   border-bottom: 1px solid var(--color-primary-a30);
 }

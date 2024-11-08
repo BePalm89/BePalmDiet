@@ -1,0 +1,16 @@
+.form-item textarea {
+  padding: var(--padding-xs);
+  border: 2px solid var(--color-text-secondary);
+  border-radius: var(--border-radius-s);
+  outline: none;
+  width: 100%;
+}
+
+.form-item textarea:focus {
+  border: 2px solid var(--color-primary-a50);
+}
+
+textarea::placeholder {
+  font-family: var(--font-family-text);
+  color: var(--color-surface-a50);
+}

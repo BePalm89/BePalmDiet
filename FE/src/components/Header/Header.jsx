@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import "./Header.css";
 import Logo from "../Logo/Logo";
+import Button from "../Button/Button";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const links = [
@@ -17,6 +19,9 @@ const Header = () => {
       url: "/activities",
     },
   ];
+
+  const navigate = useNavigate();
+
   return (
     <header>
       <Logo />
@@ -31,7 +36,10 @@ const Header = () => {
           ))}
         </ul>
       </nav>
-      <div></div>
+      <Button
+        label="create recipe"
+        onClick={() => navigate("/recipes/create")}
+      />
     </header>
   );
 };

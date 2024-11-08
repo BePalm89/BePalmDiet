@@ -13,7 +13,6 @@ const Input = ({
 }) => {
   return (
     <div className="form-item">
-      {required}
       {label && (
         <label htmlFor={id}>
           {label} {required ? " *" : ""}

@@ -1,3 +1,7 @@
 .app {
   padding: var(--padding-m);
 }
+
+main {
+  height: 80vh;
+}

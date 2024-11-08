@@ -4,15 +4,20 @@
   gap: var(--gap-xs);
 }
 
+.form-item label {
+  text-transform: capitalize;
+}
+
 .form-item input {
   padding: var(--padding-xs);
-  border: 1px solid var(--color-primary-a50);
+  border: 2px solid var(--color-text-secondary);
   border-radius: var(--border-radius-s);
   outline: none;
+  width: 100%;
 }
 
 .form-item input:focus {
-  border: 1px solid var(--color-primary-a50);
+  border: 2px solid var(--color-primary-a50);
 }
 
 input::placeholder {
@@ -25,8 +30,8 @@ input::placeholder {
 }
 
 .icon-container {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   background-color: var(--color-primary-a50);
   display: flex;
   justify-content: center;

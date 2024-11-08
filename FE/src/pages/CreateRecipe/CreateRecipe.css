@@ -1,0 +1,19 @@
+.create-recipe-container {
+  margin-top: var(--margin-l);
+  display: flex;
+  gap: var(--gap-xl);
+  height: 100%;
+}
+
+.main-container {
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cta-container {
+  display: flex;
+  gap: var(--gap-m);
+  justify-content: flex-end;
+}

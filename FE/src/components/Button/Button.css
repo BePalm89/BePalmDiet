@@ -1,0 +1,24 @@
+.btn {
+  padding: var(--padding-xs) var(--padding-s);
+  border: none;
+  font-family: var(--font-family-text);
+  text-transform: capitalize;
+  border-radius: var(--border-radius-xs);
+  cursor: pointer;
+  font-size: var(--font-size-s);
+}
+
+.bnt:hover {
+  border: none;
+}
+
+.btn.primary {
+  background-color: var(--color-primary-a50);
+  color: var(--color-surface-a20);
+}
+
+.btn.disabled {
+  background-color: var(--color-primary-disabled);
+  cursor: not-allowed;
+  color: var(--color-surface-a50);
+}

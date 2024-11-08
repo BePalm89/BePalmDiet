@@ -1,0 +1,11 @@
+.recipe-img-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: overlay;
+  height: 60vh;
+  flex: 1;
+  border-radius: var(--border-radius-l);
+  padding: var(--padding-m);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-m);
+}
