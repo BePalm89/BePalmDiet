@@ -1,6 +1,6 @@
 import "./CreateRecipe.css";
 
-import { useState } from "react";
+import React, { useState } from "react";
 
 import Wizard from "../../components/Wizard/Wizard";
 import Button from "../../components/Button/Button";
@@ -43,30 +43,60 @@ const CreateRecipe = () => {
     },
   ]);
 
-  const [activeStep, setActiveStep] = useState(steps[0]);
+  const [activeStepIndex, setActiveStepIndex] = useState(0);
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    description: "",
+    photo: null,
+    ingredients: [],
+  });
+
+  const updateFormData = (newData) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      ...newData,
+    }));
+  };
+
+  const handleFormValid = (isValid) => {
+    setIsFormValid(isValid);
+
+    setSteps((prevSteps) =>
+      prevSteps.map((step, index) =>
+        index === activeStepIndex ? { ...step, isDone: isValid } : step
+      )
+    );
+  };
 
   const handleNext = () => {
-    const currentIndex = steps.indexOf(activeStep);
-    setActiveStep(steps[currentIndex + 1]);
+    setActiveStepIndex((prevIndex) => prevIndex + 1);
   };
 
   const handlePrev = () => {
-    const currentIndex = steps.indexOf(activeStep);
-    setActiveStep(steps[currentIndex - 1]);
+    setActiveStepIndex((prevIndex) => prevIndex - 1);
   };
+
+  const ActiveStepComponent = steps[activeStepIndex].component;
 
   return (
     <div className="create-recipe-container">
       <Wizard steps={steps} />
       <div className="main-container">
-        <div>{activeStep.component()}</div>
+        {React.createElement(ActiveStepComponent, {
+          onFormValid: handleFormValid,
+          formData,
+          updateFormData,
+        })}
+
         <div className="cta-container">
           <Button
             label="previous"
             onClick={handlePrev}
-            disabled={steps.indexOf(activeStep) === 0}
+            disabled={activeStepIndex === 0}
           />
-          <Button label="next" onClick={handleNext} />
+          <Button label="next" onClick={handleNext} disabled={!isFormValid} />
         </div>
       </div>
     </div>

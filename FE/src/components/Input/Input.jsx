@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import "./Input.css";
 
 const Input = ({
@@ -11,10 +12,22 @@ const Input = ({
   icon,
   fcnIcon,
   error,
+  onFileChange,
 }) => {
+  const [fileName, setFileName] = useState("No file chosen");
+
+  useEffect(() => {
+    if (type === "file" && value) {
+      setFileName(value);
+    }
+  }, []);
+
   const handleFileChange = (e) => {
-    const fileName = e.target.files[0]?.name || "No file chosen";
-    document.getElementById("file-chosen").textContent = fileName;
+    const file = e.target.files[0];
+    if (file) {
+      onFileChange(file);
+      setFileName(file.name);
+    }
   };
 
   return (
@@ -54,7 +67,7 @@ const Input = ({
             <label className="custom-file" htmlFor={id}>
               Choose file
             </label>
-            <span id="file-chosen">No file chosen</span>
+            <span id="file-chosen">{fileName}</span>
           </div>
         </>
       )}

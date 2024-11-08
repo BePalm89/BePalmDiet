@@ -4,6 +4,7 @@
   border-radius: var(--border-radius-s);
   outline: none;
   width: 100%;
+  font-family: var(--font-family-text);
 }
 
 .form-item textarea:focus {
