@@ -1,0 +1,92 @@
+.custom-select {
+  padding: var(--padding-xs);
+  border: 2px solid var(--color-text-secondary);
+  border-radius: var(--border-radius-s);
+  outline: none;
+  width: 100%;
+  background-color: var(--color-text-primary);
+  height: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-surface-a0);
+  text-transform: capitalize;
+}
+
+.custom-select span:last-of-type {
+  width: 20px;
+  height: 20px;
+}
+
+.custom-select span img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.custom-select-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-text-primary);
+  border-radius: 4px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 4px;
+  z-index: 2;
+  max-height: 200px;
+  overflow-y: auto;
+  text-transform: capitalize;
+  padding: 0 var(--padding-xxs) var(--padding-xs);
+}
+
+.custom-select-option {
+  color: var(--color-surface-a0);
+  padding: var(--padding-xs) var(--padding-xxs);
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-bottom: 1px solid var(--color-primary-a50);
+  display: flex;
+  gap: var(--padding-xs);
+  align-items: center;
+}
+
+.custom-select-panel::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-select-panel::-webkit-scrollbar-track {
+  background-color: var(--color-primary-a50);
+  border-radius: var(--border-radius-xs);
+}
+
+.custom-select-panel::-webkit-scrollbar-thumb {
+  background-color: var(--color-text-secondary);
+  border-radius: var(--border-radius-xs);
+}
+
+.custom-select-option:hover {
+  background-color: var(--color-primary-a50);
+}
+
+.custom-selected-value {
+  display: flex;
+  gap: var(--padding-xs);
+  align-items: center;
+}
+
+.custom-select-panel .option-icon-container,
+.custom-selected-value .option-icon-container {
+  width: 18px;
+  height: 18px;
+}
+
+.custom-select-panel .option-icon-container img,
+.custom-selected-value .option-icon-container img {
+  width: 100%;
+  height: 100%;
+}
+
+.custom-select .select-placeholder {
+  color: var(--color-surface-mixed-a50);
+}

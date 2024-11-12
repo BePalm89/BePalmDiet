@@ -51,6 +51,7 @@ const CreateRecipe = () => {
     description: "",
     photo: null,
     ingredients: [],
+    instructions: [],
   });
 
   const updateFormData = (newData) => {
@@ -71,6 +72,7 @@ const CreateRecipe = () => {
   };
 
   const handleNext = () => {
+    console.log(formData);
     setActiveStepIndex((prevIndex) => prevIndex + 1);
   };
 
@@ -97,7 +99,8 @@ const CreateRecipe = () => {
             disabled={activeStepIndex === 0}
             variant="secondary"
           />
-          <Button label="next" onClick={handleNext} disabled={!isFormValid} />
+          {/*           <Button label="next" onClick={handleNext} disabled={!isFormValid} /> */}
+          <Button label="next" onClick={handleNext} />
         </div>
       </div>
     </div>

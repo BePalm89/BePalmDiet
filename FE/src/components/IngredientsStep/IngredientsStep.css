@@ -20,3 +20,29 @@
   flex-direction: column;
   gap: var(--gap-m);
 }
+
+.ingredient-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-s);
+}
+
+.ingredient-form h4 {
+  margin-top: var(--margin-l);
+}
+
+.ingredient-form .ingredient-form-item {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--gap-l);
+}
+
+.ingredient-form .ingredient-form-item .form-item {
+  flex: 1;
+}
+
+.remove-ingredient-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--margin-s);
+}

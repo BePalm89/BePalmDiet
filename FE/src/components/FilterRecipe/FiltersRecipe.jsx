@@ -39,7 +39,7 @@ const FiltersRecipe = ({ selectedFilter, onFilterChange, onSearchChange }) => {
         placeholder="Search for a recipe"
         type="text"
         icon={{ img: "/icons/search.png", value: "search" }}
-        fcn={(e) => {
+        onChange={(e) => {
           setSearchValue(e.target.value);
         }}
         fcnIcon={handleSearch}

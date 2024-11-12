@@ -7,12 +7,13 @@ const Input = ({
   required = false,
   placeholder,
   value,
-  fnc,
+  onChange,
   type,
   icon,
   fcnIcon,
   error,
   onFileChange,
+  name,
 }) => {
   const [fileName, setFileName] = useState("No file chosen");
 
@@ -44,8 +45,9 @@ const Input = ({
             type={type}
             placeholder={placeholder}
             value={value}
-            onChange={fnc}
+            onChange={onChange}
             className={error ? "input-error" : ""}
+            name={name}
           />
           {icon ? (
             <div className="icon-container" onClick={fcnIcon}>

@@ -96,7 +96,7 @@ const StartRecipeStep = ({ onFormValid, formData, updateFormData }) => {
             required={true}
             placeholder="Enter the name of the recipe"
             type="text"
-            fnc={handleInputChange}
+            onChange={handleInputChange}
             error={errors.name}
             value={localData.name}
           />
@@ -105,7 +105,7 @@ const StartRecipeStep = ({ onFormValid, formData, updateFormData }) => {
             required={true}
             placeholder="Enter the description for the recipe"
             id="description"
-            fnc={handleInputChange}
+            onChange={handleInputChange}
             error={errors.description}
             value={localData.description}
           />

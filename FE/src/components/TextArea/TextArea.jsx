@@ -1,6 +1,14 @@
 import "./TextArea.css";
 
-const TextArea = ({ label, id, required, placeholder, fnc, error, value }) => {
+const TextArea = ({
+  label,
+  id,
+  required,
+  placeholder,
+  onChange,
+  error,
+  value,
+}) => {
   return (
     <div className="form-item">
       {label && (
@@ -11,7 +19,7 @@ const TextArea = ({ label, id, required, placeholder, fnc, error, value }) => {
       <textarea
         htmlFor={id}
         placeholder={placeholder}
-        onChange={fnc}
+        onChange={onChange}
         id={id}
         className={error ? "input-error" : ""}
         value={value}

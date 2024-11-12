@@ -14,7 +14,7 @@ const Button = ({
       disabled={disabled}
       className={`btn ${variant} ${disabled ? "disabled" : ""}`}
     >
-      {label}
+      {icon && <img src={icon.url} alt={icon.name}></img>} {label}
     </button>
   );
 };
