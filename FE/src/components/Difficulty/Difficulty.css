@@ -1,4 +1,4 @@
-.difficulty-container {
+.absolute {
   position: absolute;
   top: 20px;
   right: -15px;
@@ -11,7 +11,12 @@
   z-index: 1;
 }
 
-.difficulty-container #chef-hat {
+.absolute #chef-hat,
+.relative #chef-hat {
   width: 32px;
   height: 32px;
+}
+
+.relative {
+  position: relative;
 }

@@ -76,7 +76,8 @@ const StartRecipeStep = ({ onFormValid, formData, updateFormData }) => {
   };
 
   const handleFileChange = (file) => {
-    const updatedData = { ...localData, photo: file };
+    const photoURL = URL.createObjectURL(file);
+    const updatedData = { ...localData, photo: photoURL };
     setLocalFormData(updatedData);
     updateFormData(updatedData);
 

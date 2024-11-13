@@ -1,0 +1,9 @@
+.info-block-title {
+  font-weight: var(--font-weight-bold);
+}
+
+.info-block-container {
+  display: flex;
+  gap: var(--gap-xs);
+  align-items: center;
+}

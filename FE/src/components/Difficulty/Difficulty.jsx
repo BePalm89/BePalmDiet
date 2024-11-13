@@ -1,7 +1,7 @@
 import "./Difficulty.css";
 
 import PropTypes from "prop-types";
-const Difficulty = ({ difficulty }) => {
+const Difficulty = ({ difficulty, variant = "absolute" }) => {
   const difficultyMap = {
     easy: 1,
     medium: 2,
@@ -11,7 +11,7 @@ const Difficulty = ({ difficulty }) => {
   const hatsToDisplay = difficultyMap[difficulty] || 0;
 
   return (
-    <div className="difficulty-container">
+    <div className={variant}>
       {Array.from({ length: hatsToDisplay }).map((_, index) => (
         <img
           key={index}
@@ -26,6 +26,7 @@ const Difficulty = ({ difficulty }) => {
 
 Difficulty.propTypes = {
   difficulty: PropTypes.string.isRequired,
+  variant: PropTypes.string,
 };
 
 export default Difficulty;
