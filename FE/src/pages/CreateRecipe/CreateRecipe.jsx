@@ -52,6 +52,12 @@ const CreateRecipe = () => {
     photo: null,
     ingredients: [],
     instructions: [],
+    difficulty: "",
+    meal: "",
+    preparationTime: "",
+    cookingTime: "",
+    rating: "",
+    comments: "",
   });
 
   const updateFormData = (newData) => {

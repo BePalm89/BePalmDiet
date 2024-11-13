@@ -39,7 +39,7 @@ const Input = ({
           {label} {required ? " *" : ""}
         </label>
       )}
-      {type === "text" ? (
+      {type !== "file" ? (
         <div className="form-input">
           <input
             id={id}
@@ -84,7 +84,7 @@ Input.propTypes = {
   id: PropTypes.string.isRequired,
   required: PropTypes.bool,
   placeholder: PropTypes.string,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   type: PropTypes.string.isRequired,
   icon: PropTypes.shape({
     img: PropTypes.string.isRequired,

@@ -1,0 +1,9 @@
+.more-info-form-item {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--gap-l);
+}
+
+.more-info-form-item .form-item {
+  flex: 1;
+}
