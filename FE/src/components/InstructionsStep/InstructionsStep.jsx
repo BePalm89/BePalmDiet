@@ -1,6 +1,7 @@
 import "./InstructionsStep.css";
 
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 import Input from "../Input/Input";
 import TextArea from "../TextArea/TextArea";
@@ -9,33 +10,33 @@ import LayoutStep from "../LayoutStep/LayoutStep";
 import Title from "../Title/Title";
 
 const InstructionsStep = ({ onFormValid, formData, updateFormData }) => {
-  const [instructions, setInstruction] = useState([
+  const [instructions, setInstructions] = useState([
     { title: "", description: "" },
   ]);
 
   const handleFieldChange = (index, field, value) => {
     const newFields = [...instructions];
     newFields[index][field] = value;
-    setInstruction(newFields);
+    setInstructions(newFields);
     updateFormData({ instructions: newFields });
   };
 
   const handleAddFields = () => {
     const values = [...instructions];
     values.push({ title: "", description: "" });
-    setInstruction(values);
+    setInstructions(values);
   };
 
   const handleRemoveFields = (index) => {
     const values = [...instructions];
     values.splice(index, 1);
-    setInstruction(values);
+    setInstructions(values);
     updateFormData({ instructions: values });
   };
 
   useEffect(() => {
     if (formData.instructions.length) {
-      setInstruction(formData.instructions);
+      setInstructions(formData.instructions);
     }
     // Check for validation
     onFormValid(true);
@@ -60,6 +61,7 @@ const InstructionsStep = ({ onFormValid, formData, updateFormData }) => {
               onChange={(event) =>
                 handleFieldChange(index, "title", event.target.value)
               }
+              id="title"
             />
             <TextArea
               label="description"
@@ -90,6 +92,12 @@ const InstructionsStep = ({ onFormValid, formData, updateFormData }) => {
       </div>
     </LayoutStep>
   );
+};
+
+InstructionsStep.propTypes = {
+  onFormValid: PropTypes.func,
+  formData: PropTypes.object,
+  updateFormData: PropTypes.func,
 };
 
 export default InstructionsStep;

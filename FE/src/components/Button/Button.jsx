@@ -24,7 +24,7 @@ const Button = ({
 Button.propTypes = {
   label: PropTypes.string.isRequired,
   type: PropTypes.string,
-  disabled: PropTypes.string,
+  disabled: PropTypes.bool,
   icon: PropTypes.shape({
     name: PropTypes.string,
     url: PropTypes.string,

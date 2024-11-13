@@ -1,6 +1,9 @@
-import Input from "../Input/Input";
-import { useState } from "react";
 import "./FiltersRecipe.css";
+
+import { useState } from "react";
+import PropTypes from "prop-types";
+
+import Input from "../Input/Input";
 
 const FiltersRecipe = ({ selectedFilter, onFilterChange, onSearchChange }) => {
   const filters = [
@@ -42,10 +45,17 @@ const FiltersRecipe = ({ selectedFilter, onFilterChange, onSearchChange }) => {
         onChange={(e) => {
           setSearchValue(e.target.value);
         }}
+        value=""
         fcnIcon={handleSearch}
       />
     </div>
   );
+};
+
+FiltersRecipe.propTypes = {
+  selectedFilter: PropTypes.string,
+  onFilterChange: PropTypes.func,
+  onSearchChange: PropTypes.func,
 };
 
 export default FiltersRecipe;

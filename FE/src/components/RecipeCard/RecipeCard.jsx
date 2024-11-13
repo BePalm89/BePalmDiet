@@ -1,4 +1,7 @@
 import "./RecipeCard.css";
+
+import PropTypes from "prop-types";
+
 import Difficulty from "../Difficulty/Difficulty";
 import Rating from "../Rating/Rating";
 import Link from "../Link/Link";
@@ -35,6 +38,21 @@ const RecipeCard = ({ recipe }) => {
       </div>
     </div>
   );
+};
+
+RecipeCard.propTypes = {
+  recipe: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    difficulty: PropTypes.oneOf(["easy", "medium", "hard"]),
+    meal: PropTypes.oneOf(["breakfast", "lunch", "dinner", "break"]),
+    photo: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    time: PropTypes.shape({
+      cookingTime: PropTypes.number.isRequired,
+      preparationTime: PropTypes.number.isRequired,
+    }),
+  }),
 };
 
 export default RecipeCard;

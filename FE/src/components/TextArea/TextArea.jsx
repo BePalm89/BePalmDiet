@@ -1,13 +1,15 @@
 import "./TextArea.css";
 
+import PropTypes from "prop-types";
+
 const TextArea = ({
   label,
   id,
   required,
   placeholder,
-  onChange,
   error,
   value,
+  onChange,
 }) => {
   return (
     <div className="form-item">
@@ -27,6 +29,16 @@ const TextArea = ({
       {error && <span className="error-message">{error}</span>}
     </div>
   );
+};
+
+TextArea.propTypes = {
+  label: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  required: PropTypes.bool,
+  placeholder: PropTypes.string,
+  error: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
 };
 
 export default TextArea;

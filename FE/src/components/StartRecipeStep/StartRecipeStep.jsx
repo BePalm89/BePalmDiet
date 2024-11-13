@@ -1,9 +1,9 @@
 import "./StartRecipeStep.css";
 
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 import Input from "../Input/Input";
-import Image from "../Image/Image";
 import TextArea from "../TextArea/TextArea";
 import LayoutStep from "../LayoutStep/LayoutStep";
 const StartRecipeStep = ({ onFormValid, formData, updateFormData }) => {
@@ -122,6 +122,12 @@ const StartRecipeStep = ({ onFormValid, formData, updateFormData }) => {
       />
     </LayoutStep>
   );
+};
+
+StartRecipeStep.propTypes = {
+  onFormValid: PropTypes.func,
+  formData: PropTypes.object,
+  updateFormData: PropTypes.func,
 };
 
 export default StartRecipeStep;

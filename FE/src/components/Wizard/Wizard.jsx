@@ -1,5 +1,7 @@
 import "./Wizard.css";
 
+import PropTypes from "prop-types";
+
 const Wizard = ({ steps }) => {
   return (
     <div className="wizard-container">
@@ -18,6 +20,17 @@ const Wizard = ({ steps }) => {
       </ul>
     </div>
   );
+};
+
+Wizard.propTypes = {
+  steps: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      isDone: PropTypes.bool,
+      component: PropTypes.func,
+    })
+  ),
 };
 
 export default Wizard;

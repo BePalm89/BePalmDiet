@@ -1,5 +1,6 @@
 import "./Difficulty.css";
 
+import PropTypes from "prop-types";
 const Difficulty = ({ difficulty }) => {
   const difficultyMap = {
     easy: 1,
@@ -21,6 +22,10 @@ const Difficulty = ({ difficulty }) => {
       ))}
     </div>
   );
+};
+
+Difficulty.propTypes = {
+  difficulty: PropTypes.string.isRequired,
 };
 
 export default Difficulty;

@@ -1,14 +1,15 @@
-import { useState } from "react";
 import "./Select.css";
 
+import { useState } from "react";
+import PropTypes from "prop-types";
 const Select = ({
   label,
   options,
   required,
   id,
-  onChange,
   placeholder,
   value,
+  onChange,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -69,6 +70,22 @@ const Select = ({
       </div>
     </div>
   );
+};
+
+Select.propTypes = {
+  label: PropTypes.string,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
+      icon: PropTypes.string,
+    })
+  ),
+  required: PropTypes.bool,
+  id: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
 };
 
 export default Select;

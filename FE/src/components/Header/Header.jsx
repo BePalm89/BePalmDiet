@@ -1,8 +1,9 @@
-import { NavLink } from "react-router-dom";
 import "./Header.css";
+
+import { NavLink, useNavigate } from "react-router-dom";
+
 import Logo from "../Logo/Logo";
 import Button from "../Button/Button";
-import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const links = [

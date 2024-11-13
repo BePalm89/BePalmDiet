@@ -1,19 +1,20 @@
-import { useEffect, useState } from "react";
 import "./Input.css";
 
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 const Input = ({
   label,
   id,
   required = false,
   placeholder,
   value,
-  onChange,
   type,
   icon,
-  fcnIcon,
   error,
-  onFileChange,
   name,
+  fcnIcon,
+  onFileChange,
+  onChange,
 }) => {
   const [fileName, setFileName] = useState("No file chosen");
 
@@ -76,6 +77,24 @@ const Input = ({
       {error && <span className="error-message">{error}</span>}
     </div>
   );
+};
+
+Input.propTypes = {
+  label: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  required: PropTypes.bool,
+  placeholder: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  icon: PropTypes.shape({
+    img: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+  }),
+  error: PropTypes.string,
+  name: PropTypes.string,
+  fcnIcon: PropTypes.func,
+  onFileChange: PropTypes.func,
+  onChange: PropTypes.func,
 };
 
 export default Input;

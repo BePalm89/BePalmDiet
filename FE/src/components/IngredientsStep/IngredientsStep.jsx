@@ -1,6 +1,7 @@
 import "./IngredientsStep.css";
 
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 import Button from "../Button/Button";
 import Input from "../Input/Input";
@@ -105,6 +106,7 @@ const IngredientsStep = ({ onFormValid, formData, updateFormData }) => {
                 <div className="ingredient-form-item">
                   <Input
                     label="amount"
+                    id="amount"
                     type="text"
                     required={true}
                     value={ingredient.amount}
@@ -157,6 +159,12 @@ const IngredientsStep = ({ onFormValid, formData, updateFormData }) => {
       </div>
     </LayoutStep>
   );
+};
+
+IngredientsStep.propTypes = {
+  onFormValid: PropTypes.func,
+  formData: PropTypes.object,
+  updateFormData: PropTypes.func,
 };
 
 export default IngredientsStep;
