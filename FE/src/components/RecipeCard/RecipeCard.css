@@ -39,12 +39,6 @@
   padding: var(--padding-xs);
 }
 
-.card-container h4 {
-  color: var(--color-surface-a0);
-  text-transform: capitalize;
-  font-size: var(--font-size-l);
-}
-
 .card-container .card-info {
   display: flex;
   flex-direction: column;
