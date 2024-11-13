@@ -2,10 +2,11 @@ import "./InstructionsStep.css";
 
 import { useState, useEffect } from "react";
 
-import Image from "../Image/Image";
 import Input from "../Input/Input";
 import TextArea from "../TextArea/TextArea";
 import Button from "../Button/Button";
+import LayoutStep from "../LayoutStep/LayoutStep";
+import Title from "../Title/Title";
 
 const InstructionsStep = ({ onFormValid, formData, updateFormData }) => {
   const [instructions, setInstruction] = useState([
@@ -41,58 +42,53 @@ const InstructionsStep = ({ onFormValid, formData, updateFormData }) => {
   }, []);
 
   return (
-    <div className="instructions-page-container">
-      <h2>Add instructions</h2>
-      <div className="instructions-page-body">
-        <div className="instructions-page-form">
-          {instructions.map((instruction, index) => (
-            <div key={`${instruction}~${index}`} className="instructions-form">
-              <h4>Instruction &nbsp; {index + 1}</h4>
-              <div className="instruction-form-item">
-                <Input
-                  label="title"
-                  type="text"
-                  required={true}
-                  value={instruction.title}
-                  onChange={(event) =>
-                    handleFieldChange(index, "title", event.target.value)
-                  }
-                />
-                <TextArea
-                  label="description"
-                  placeholder="Enter the description for the instruction"
-                  id="description"
-                  value={instruction.description}
-                  required={true}
-                  onChange={(event) =>
-                    handleFieldChange(index, "description", event.target.value)
-                  }
-                />
-              </div>
-              <div className="remove-instruction-container">
-                <Button
-                  label="remove instruction"
-                  icon={{ name: "plus", url: "/icons/plus.png" }}
-                  onClick={() => handleRemoveFields(index)}
-                />
-              </div>
-            </div>
-          ))}
-          <div>
+    <LayoutStep
+      title="Add instructions"
+      titleImg="Write the instruction fro the recipe"
+      descriptionImg="Introduce a name and a description for every instruction"
+      urlPhotoImg="/images/instructions.jpg"
+    >
+      {instructions.map((instruction, index) => (
+        <div key={`${instruction}~${index}`} className="instructions-form">
+          <Title text={`Instruction ${index + 1}`} level={4} />
+          <div className="instruction-form-item">
+            <Input
+              label="title"
+              type="text"
+              required={true}
+              value={instruction.title}
+              onChange={(event) =>
+                handleFieldChange(index, "title", event.target.value)
+              }
+            />
+            <TextArea
+              label="description"
+              placeholder="Enter the description for the instruction"
+              id="description"
+              value={instruction.description}
+              required={true}
+              onChange={(event) =>
+                handleFieldChange(index, "description", event.target.value)
+              }
+            />
+          </div>
+          <div className="remove-instruction-container">
             <Button
-              label="add instruction"
+              label="remove instruction"
               icon={{ name: "plus", url: "/icons/plus.png" }}
-              onClick={() => handleAddFields()}
+              onClick={() => handleRemoveFields(index)}
             />
           </div>
         </div>
-        <Image
-          title="Write the instruction fro the recipe"
-          description="Introduce a name and a description for every instruction"
-          urlPhoto="/images/instructions.jpg"
+      ))}
+      <div>
+        <Button
+          label="add instruction"
+          icon={{ name: "plus", url: "/icons/plus.png" }}
+          onClick={() => handleAddFields()}
         />
       </div>
-    </div>
+    </LayoutStep>
   );
 };
 

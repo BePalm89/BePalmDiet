@@ -2,11 +2,12 @@ import "./IngredientsStep.css";
 
 import { useEffect, useState } from "react";
 
-import Image from "../Image/Image";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import Select from "../Select/Select";
 import TextArea from "../TextArea/TextArea";
+import LayoutStep from "../LayoutStep/LayoutStep";
+import Title from "../Title/Title";
 const IngredientsStep = ({ onFormValid, formData, updateFormData }) => {
   const [ingredientFields, setIngredientFields] = useState([
     { name: "", amount: "", type: "", unit: "", comments: "" },
@@ -65,101 +66,96 @@ const IngredientsStep = ({ onFormValid, formData, updateFormData }) => {
   ];
 
   return (
-    <div className="ingredients-page-container">
-      <h2>Add the ingredients</h2>
-      <div className="ingredients-page-body">
-        <div className="ingredients-page-form">
-          {ingredientFields.map((ingredient, index) => (
-            <div key={`${ingredient}~${index}`} className="ingredient-form">
-              <h4>Ingredient&nbsp; {index + 1}</h4>
-              <div className="ingredient-form-item">
-                <Input
-                  label="name"
-                  type="text"
-                  required={true}
-                  value={ingredient.name}
-                  onChange={(event) =>
-                    handleFieldChange(index, "name", event.target.value)
-                  }
-                  name="name"
-                  id="name"
-                />
-                <Select
-                  options={typeOptions}
-                  required={true}
-                  id="type"
-                  label="type"
-                  placeholder="select the type"
-                  value={ingredient.type}
-                  onChange={(option) =>
-                    handleFieldChange(index, "type", option.value)
-                  }
-                />
-              </div>
-              {ingredient?.type && (
-                <>
-                  {ingredient.type !== "spices" && (
-                    <div className="ingredient-form-item">
-                      <Input
-                        label="amount"
-                        type="text"
-                        required={true}
-                        value={ingredient.amount}
-                        onChange={(event) =>
-                          handleFieldChange(index, "amount", event.target.value)
-                        }
-                      />
-                      <Select
-                        options={
-                          ingredient.type === "liquid"
-                            ? unitLiquidOptions
-                            : unitSolidOptions
-                        }
-                        id="unit"
-                        label="unit"
-                        placeholder="select the unit"
-                        value={ingredient.unit}
-                        onChange={(option) =>
-                          handleFieldChange(index, "unit", option.value)
-                        }
-                      />
-                    </div>
-                  )}
-                  <TextArea
-                    label="comments"
-                    placeholder="Enter the description for the recipe"
-                    id="comments"
-                    value={ingredient.comments}
+    <LayoutStep
+      title="Add the ingredients"
+      titleImg="Start introducing the ingredients"
+      descriptionImg="Introduce the ingredients with their nama, type, amount and if you need some comments"
+      urlPhotoImg="/images/ingredients.jpg"
+    >
+      {ingredientFields.map((ingredient, index) => (
+        <div key={`${ingredient}~${index}`} className="ingredient-form">
+          <Title text={`Ingredient ${index + 1}`} level={4} />
+          <div className="ingredient-form-item">
+            <Input
+              label="name"
+              type="text"
+              required={true}
+              value={ingredient.name}
+              onChange={(event) =>
+                handleFieldChange(index, "name", event.target.value)
+              }
+              name="name"
+              id="name"
+            />
+            <Select
+              options={typeOptions}
+              required={true}
+              id="type"
+              label="type"
+              placeholder="select the type"
+              value={ingredient.type}
+              onChange={(option) =>
+                handleFieldChange(index, "type", option.value)
+              }
+            />
+          </div>
+          {ingredient?.type && (
+            <>
+              {ingredient.type !== "spices" && (
+                <div className="ingredient-form-item">
+                  <Input
+                    label="amount"
+                    type="text"
+                    required={true}
+                    value={ingredient.amount}
                     onChange={(event) =>
-                      handleFieldChange(index, "comments", event.target.value)
+                      handleFieldChange(index, "amount", event.target.value)
                     }
                   />
-                </>
+                  <Select
+                    options={
+                      ingredient.type === "liquid"
+                        ? unitLiquidOptions
+                        : unitSolidOptions
+                    }
+                    id="unit"
+                    label="unit"
+                    placeholder="select the unit"
+                    value={ingredient.unit}
+                    onChange={(option) =>
+                      handleFieldChange(index, "unit", option.value)
+                    }
+                  />
+                </div>
               )}
-              <div className="remove-ingredient-container">
-                <Button
-                  label="remove ingredient"
-                  icon={{ name: "plus", url: "/icons/plus.png" }}
-                  onClick={() => handleRemoveFields(index)}
-                />
-              </div>
-            </div>
-          ))}
-          <div>
+              <TextArea
+                label="comments"
+                placeholder="Enter the description for the recipe"
+                id="comments"
+                value={ingredient.comments}
+                onChange={(event) =>
+                  handleFieldChange(index, "comments", event.target.value)
+                }
+              />
+            </>
+          )}
+          <div className="remove-ingredient-container">
             <Button
-              label="add ingredient"
+              label="remove ingredient"
               icon={{ name: "plus", url: "/icons/plus.png" }}
-              onClick={() => handleAddFields()}
+              onClick={() => handleRemoveFields(index)}
             />
           </div>
         </div>
-        <Image
-          title="Start creating your recipe"
-          description="Introduce a name, a description and a photo"
-          urlPhoto="/images/ingredients.jpg"
+      ))}
+      <div>
+        <Button
+          label="add ingredient"
+          icon={{ name: "plus", url: "/icons/plus.png" }}
+          onClick={() => handleAddFields()}
         />
       </div>
-    </div>
+    </LayoutStep>
   );
 };
 

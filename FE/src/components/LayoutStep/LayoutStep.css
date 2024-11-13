@@ -1,0 +1,18 @@
+.step-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-m);
+}
+
+.step-body {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+}
+
+.step-form {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-m);
+}
