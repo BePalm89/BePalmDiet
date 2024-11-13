@@ -75,12 +75,14 @@ const InstructionsStep = ({ onFormValid, formData, updateFormData }) => {
             />
           </div>
           <div className="remove-instruction-container">
-            <Button
-              label="remove instruction"
-              icon={{ name: "plus", url: "/icons/minus.png" }}
-              onClick={() => handleRemoveFields(index)}
-              variant="danger"
-            />
+            {instructions.length > 1 && (
+              <Button
+                label="remove instruction"
+                icon={{ name: "plus", url: "/icons/minus.png" }}
+                onClick={() => handleRemoveFields(index)}
+                variant="danger"
+              />
+            )}
           </div>
         </div>
       ))}
