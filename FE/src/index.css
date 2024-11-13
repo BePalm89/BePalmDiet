@@ -11,6 +11,7 @@
   --color-primary-a30: #019a74;
   --color-primary-a40: #01a66f;
   --color-primary-a50: #33d0a3;
+  --color-primary-a50-hover: #2abf93;
   --color-primary-disabled: #9fdcc9;
 
   --color-accent-a0: #a35b00;
@@ -38,6 +39,7 @@
   --color-text-secondary: #e0e0e0;
 
   --color-error-text: #ff4d4d;
+  --color-error-text-hover: #ff3333;
 
   --font-size-xs: 12px;
   --font-size-s: 16px;

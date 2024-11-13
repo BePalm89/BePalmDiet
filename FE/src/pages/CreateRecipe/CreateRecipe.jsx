@@ -99,7 +99,7 @@ const CreateRecipe = () => {
             disabled={activeStepIndex === 0}
             variant="secondary"
           />
-          {/*           <Button label="next" onClick={handleNext} disabled={!isFormValid} /> */}
+          {/* <Button label="next" onClick={handleNext} disabled={!isFormValid} /> */}
           <Button label="next" onClick={handleNext} />
         </div>
       </div>

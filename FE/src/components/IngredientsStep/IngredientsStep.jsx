@@ -144,8 +144,9 @@ const IngredientsStep = ({ onFormValid, formData, updateFormData }) => {
           <div className="remove-ingredient-container">
             <Button
               label="remove ingredient"
-              icon={{ name: "plus", url: "/icons/plus.png" }}
+              icon={{ name: "plus", url: "/icons/minus.png" }}
               onClick={() => handleRemoveFields(index)}
+              variant="danger"
             />
           </div>
         </div>
