@@ -2,36 +2,30 @@ import mongoose from "mongoose";
 
 const ingredientSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true },
-    amount: { type: Number, required: true },
+    name: { type: String, required: false },
+    type: { type: String, enum: ["liquid", "meat", "fish", "legume", "vegetables", "spices", "animal-products", "starches", "nuts"], required: false },
+    amount: { type: Number, required: false },
+    unit: { type: String, enum: ["ml", "l", "g", "kg", ""], required: false },
+    comments: { type: String, required: false },
   },
   { timestamps: true, collation: "ingredients" }
 );
 
 const timeSchema = new mongoose.Schema(
   {
-    cookingTime: { type: Number, required: true },
-    preparationTime: { type: Number, required: true },
+    cookingTime: { type: Number, required: false },
+    preparationTime: { type: Number, required: false },
   },
   { timestamps: true, collation: "time" }
 );
 
-const stepsSchema = new mongoose.Schema(
+const instructionSchema = new mongoose.Schema(
   {
-    stepName: { type: String, required: true },
-    instruction: { type: String, required: true },
+    title: { type: String, required: false },
+    description: { type: String, required: false },
   },
   { timestamps: true, collation: "steps" }
 );
-
-const subRecipeSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  ingredients: [ingredientSchema],
-  steps: [stepsSchema],
-});
 
 const recipeSchema = new mongoose.Schema(
   {
@@ -44,18 +38,17 @@ const recipeSchema = new mongoose.Schema(
       required: true,
     },
     ingredients: [ingredientSchema],
-    steps: [stepsSchema],
     time: timeSchema,
     difficulty: { type: String, enum: ["easy", "medium", "hard"] },
-    subRecipes: [subRecipeSchema],
-    photo: { type: String, required: true },
+    photo: { type: String, required: false },
+    instructions: [instructionSchema],
     meal: {
       type: String,
       enum: ["breakfast", "lunch", "dinner", "break"],
-      required: true,
+      required: false,
     },
     comments: { type: String, required: false },
-    rating: { type: Number, required: true, min: 1, max: 5 },
+    rating: { type: Number, required: false, min: 1, max: 5 },
   },
   { timestamps: true, collection: "recipes" }
 );

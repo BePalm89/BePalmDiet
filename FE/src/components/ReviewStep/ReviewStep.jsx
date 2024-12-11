@@ -4,8 +4,15 @@ import PropTypes from "prop-types";
 
 import Title from "../Title/Title";
 import InfoPanel from "../InfoPanel/InfoPanel";
+import { useEffect } from "react";
 
-const ReviewStep = ({ formData }) => {
+
+const ReviewStep = ({ onFormValid, formData}) => {
+    console.log(formData);
+  useEffect(() => {
+    onFormValid(true);
+  }, []);
+
   return (
     <div className="review-container">
       <Title
@@ -15,7 +22,7 @@ const ReviewStep = ({ formData }) => {
       />
       <div className="info-container">
         <div className="photo-container">
-          <img src={formData.photo} alt={formData.name} />
+          <img src={formData.photo.url} alt={formData.name} />
         </div>
         <div className="title-description-container">
           <Title
@@ -38,8 +45,8 @@ const ReviewStep = ({ formData }) => {
               {
                 title: "Total",
                 description: `${
-                  Number(formData.preparationTime) +
-                  Number(formData.preparationTime)
+                  Number(formData?.preparationTime) +
+                  Number(formData?.cookingTime)
                 } minutes`,
               },
             ]}
@@ -58,18 +65,35 @@ const ReviewStep = ({ formData }) => {
               },
               {
                 title: "Rating",
-                description: formData.rating,
+                description: formData.rating.toString(),
               },
             ]}
           />
         </div>
       </div>
+      <InfoPanel
+        panelTitle="Ingredients"
+        infos={formData.ingredients.map((ingredient) => ({
+          description: `• ${ingredient.amount} ${ingredient.unit} ${
+            ingredient.name
+          }${ingredient.comments ? ` (${ingredient.comments})` : ""}`,
+        }))}
+      />
+      <InfoPanel
+        panelTitle="Instruction"
+        variant="secondary"
+        infos={formData.instructions.map((instruction) => ({
+          title: instruction.title,
+          description: instruction.description,
+        }))}
+      />
     </div>
   );
 };
 
 ReviewStep.propTypes = {
   formData: PropTypes.object,
+  onFormValid: PropTypes.func,
 };
 
 export default ReviewStep;

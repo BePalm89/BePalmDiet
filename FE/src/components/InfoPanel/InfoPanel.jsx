@@ -27,10 +27,12 @@ const InfoPanel = ({ panelTitle, infos, variant = "primary" }) => {
 
 InfoPanel.propTypes = {
   panelTitle: PropTypes.string.isRequired,
-  infos: PropTypes.arrayOf({
-    title: PropTypes.string,
-    description: PropTypes.string.isRequired,
-  }),
+  infos: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      description: PropTypes.string,
+    })
+  ),
   variant: PropTypes.string,
 };
 

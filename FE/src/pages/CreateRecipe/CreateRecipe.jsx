@@ -9,7 +9,11 @@ import IngredientsStep from "../../components/IngredientsStep/IngredientsStep";
 import InstructionsStep from "../../components/InstructionsStep/InstructionsStep";
 import MoreInfoStep from "../../components/MoreInfoStep/MoreInfoStep";
 import ReviewStep from "../../components/ReviewStep/ReviewStep";
+import {useNavigate} from "react-router-dom";
+
 const CreateRecipe = () => {
+  const navigate = useNavigate();
+
   const [steps, setSteps] = useState([
     {
       key: "first",
@@ -86,6 +90,37 @@ const CreateRecipe = () => {
     setActiveStepIndex((prevIndex) => prevIndex - 1);
   };
 
+  const handleSubmit = () => {
+    const body = new FormData();
+
+    console.log(formData);
+
+    const time = {
+      cookingTime: formData.cookingTime,
+      preparationTime: formData.preparationTime,
+    }
+
+    body.append("name", formData.name);
+    body.append("description", formData.description);
+    body.append("photo", formData.photo.data);
+    body.append("ingredients", JSON.stringify(formData.ingredients));
+    body.append("instructions", JSON.stringify(formData.instructions));
+    body.append("time", JSON.stringify(time));
+    body.append("difficulty", formData.difficulty);
+    body.append("meal", formData.meal);
+    body.append("comments", formData.comments);
+    body.append("rating", formData.rating);
+
+    fetch("http://localhost:3000/api/v1/recipes/create", {
+      method: "POST",
+      body: body,
+    })
+      .then((res) => res.json())
+      .then(() => {
+        navigate("/recipes");
+      });
+  };
+
   const ActiveStepComponent = steps[activeStepIndex].component;
 
   return (
@@ -105,8 +140,12 @@ const CreateRecipe = () => {
             disabled={activeStepIndex === 0}
             variant="secondary"
           />
+          {steps[activeStepIndex].key === "fifth" ? (
+            <Button label="submit" onClick={handleSubmit} />
+          ) : (
+            <Button label="next" onClick={handleNext} />
+          )}
           {/* <Button label="next" onClick={handleNext} disabled={!isFormValid} /> */}
-          <Button label="next" onClick={handleNext} />
         </div>
       </div>
     </div>

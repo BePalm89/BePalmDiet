@@ -10,7 +10,7 @@ const StartRecipeStep = ({ onFormValid, formData, updateFormData }) => {
   const [localData, setLocalFormData] = useState({
     name: formData.name || "",
     description: formData.description || "",
-    photo: formData.photo || null,
+    photo: formData.photo?.data || null,
   });
 
   const [errors, setErrors] = useState({
@@ -77,7 +77,7 @@ const StartRecipeStep = ({ onFormValid, formData, updateFormData }) => {
 
   const handleFileChange = (file) => {
     const photoURL = URL.createObjectURL(file);
-    const updatedData = { ...localData, photo: photoURL };
+    const updatedData = { ...localData, photo: { url: photoURL, data: file } };
     setLocalFormData(updatedData);
     updateFormData(updatedData);
 

@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--gap-m);
+  margin-bottom: var(--margin-m);
 }
 
 .review-container .info-container {

@@ -6,32 +6,38 @@ import Rating from "../Rating/Rating";
 import Difficulty from "../Difficulty/Difficulty";
 
 const InfoBlock = ({ title, description }) => {
+  const renderContent = () => {
+    if (!title) {
+      return <span>{description}</span>;
+    }
+
+    if (title.toLowerCase() === "difficulty") {
+      return (
+        <span
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "var(--gap-xs)",
+          }}
+        >
+          <span>{description}</span> (
+          <Difficulty difficulty={description} variant="relative" />)
+        </span>
+      );
+    }
+
+    if (title.toLowerCase() === "rating") {
+      return <Rating rating={Number(description)} />;
+    }
+
+    return <span>{description}</span>;
+  };
+
   return (
-    <p className="info-block-container">
-      {title && <span className="info-block-title">{title}: </span>}{" "}
-      {title ? (
-        title.toLowerCase() === "difficulty" ? (
-          <span
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "var(--gap-xs)",
-            }}
-          >
-            <span>{description}</span> (
-            <Difficulty difficulty={description} variant="relative" />)
-          </span>
-        ) : title.toLowerCase() === "rating" ? (
-          <span>
-            <Rating rating={Number(description)} />
-          </span>
-        ) : (
-          <span>{description}</span>
-        )
-      ) : (
-        <span>{description}</span>
-      )}
-    </p>
+    <div className="info-block-container">
+      {title && <span className="info-block-title">{title}: </span>}
+      {renderContent()}
+    </div>
   );
 };
 

@@ -25,17 +25,37 @@ export const getRecipeById = async (req, res, next) => {
 };
 
 export const createNewRecipe = async (req, res, next) => {
-  try {
-    const newRecipe = new Recipe(req.body);
 
-    if (req.file) {
-      newRecipe.photo = req.file.path;
-    }
+  try {
+
+    const { name, description, difficulty, meal, comments, rating } = req.body;
+
+    const time = JSON.parse(req.body.time);
+
+    const instructions = JSON.parse(req.body.instructions);
+
+    const ingredients = JSON.parse(req.body.ingredients);
+
+    const photo = req.file ? req.file.path : null;
+
+    const newRecipe = new Recipe({
+      name,
+      description,
+      time,
+      difficulty,
+      meal,
+      comments,
+      rating,
+      photo,
+      instructions,
+      ingredients
+    });
 
     const recipe = await newRecipe.save();
 
     return res.status(201).json(recipe);
   } catch (error) {
+    console.log(error);
     return next(error);
   }
 };
