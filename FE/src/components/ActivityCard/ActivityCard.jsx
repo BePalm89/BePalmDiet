@@ -1,6 +1,8 @@
 import "./ActivityCard.css";
 import PropTypes from "prop-types";
 import Link from "../Link/Link.jsx";
+import Modal from "../Modal/Modal.jsx";
+import { useState } from "react";
 
 const ActivityCard = ({ activity }) => {
   const colors = [
@@ -13,6 +15,8 @@ const ActivityCard = ({ activity }) => {
   ];
 
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div
@@ -29,7 +33,12 @@ const ActivityCard = ({ activity }) => {
         label="How to"
         url=""
         style="secondary-link"
-        action={() => console.log("How to")}
+        action={() => setIsModalOpen(true)}
+      />
+      <Modal
+        isOpen={isModalOpen}
+        data={activity}
+        onClose={() => setIsModalOpen(false)}
       />
     </div>
   );
