@@ -1,9 +1,15 @@
 .info-block-title {
   font-weight: var(--font-weight-bold);
+  width: max-content;
 }
 
 .info-block-container {
   display: flex;
   gap: var(--gap-xs);
-  align-items: center;
+  align-items: baseline;
+}
+
+.info-block-container-no-flex {
+  display: inline;
+  line-height: 25px;
 }

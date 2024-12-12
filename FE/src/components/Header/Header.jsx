@@ -1,6 +1,6 @@
 import "./Header.css";
 
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 import Logo from "../Logo/Logo";
 import Button from "../Button/Button";
@@ -22,6 +22,21 @@ const Header = () => {
   ];
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const renderButton = () => {
+    if (location.pathname === "/recipes") {
+      return (
+        <Button
+          label="create recipe"
+          onClick={() => navigate("/recipes/create")}
+        />
+      );
+    } else if (location.pathname.match("/activities")) {
+      return <Button label="create activity" onClick={() => navigate("/")} />;
+    }
+    return null;
+  };
 
   return (
     <header>
@@ -37,10 +52,7 @@ const Header = () => {
           ))}
         </ul>
       </nav>
-      <Button
-        label="create recipe"
-        onClick={() => navigate("/recipes/create")}
-      />
+      <div className="button-container">{renderButton()}</div>
     </header>
   );
 };

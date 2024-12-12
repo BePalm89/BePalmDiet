@@ -74,7 +74,7 @@ const ReviewStep = ({ onFormValid, formData}) => {
       <InfoPanel
         panelTitle="Ingredients"
         infos={formData.ingredients.map((ingredient) => ({
-          description: `• ${ingredient.amount} ${ingredient.unit} ${
+          description: `• ${ingredient.amount ?? ''} ${ingredient.unit} ${
             ingredient.name
           }${ingredient.comments ? ` (${ingredient.comments})` : ""}`,
         }))}
@@ -82,6 +82,7 @@ const ReviewStep = ({ onFormValid, formData}) => {
       <InfoPanel
         panelTitle="Instruction"
         variant="secondary"
+        style="info-block-container-no-flex"
         infos={formData.instructions.map((instruction) => ({
           title: instruction.title,
           description: instruction.description,

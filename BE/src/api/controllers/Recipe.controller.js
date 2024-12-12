@@ -25,9 +25,7 @@ export const getRecipeById = async (req, res, next) => {
 };
 
 export const createNewRecipe = async (req, res, next) => {
-
   try {
-
     const { name, description, difficulty, meal, comments, rating } = req.body;
 
     const time = JSON.parse(req.body.time);
@@ -48,7 +46,7 @@ export const createNewRecipe = async (req, res, next) => {
       rating,
       photo,
       instructions,
-      ingredients
+      ingredients,
     });
 
     const recipe = await newRecipe.save();

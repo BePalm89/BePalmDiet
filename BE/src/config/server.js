@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import recipesRouter from "../api/routes/Recipe.routes.js";
+import activitiesRouter from "../api/routes/Activity.routes.js";
 
 const server = express();
 
@@ -10,9 +11,10 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
 server.use("/api/v1/recipes", recipesRouter);
+server.use("/api/v1/activities", activitiesRouter);
 
 server.use("*", (req, res, next) => {
-  console.log("here *")
+  console.log("here *");
   const error = new Error("Route not found");
   error.status = 404;
   next(error);

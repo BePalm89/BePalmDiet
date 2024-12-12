@@ -15,6 +15,15 @@
   border-bottom: 1px solid var(--color-primary-a30);
 }
 
+.secondary-link {
+  color: var(--color-accent-a30);
+}
+
+.secondary-link:hover {
+  color: var(--color-accent-a30);
+  border-bottom: 1px solid var(--color-accent-a30);
+}
+
 #arrow {
   width: 16px;
   height: 16px;

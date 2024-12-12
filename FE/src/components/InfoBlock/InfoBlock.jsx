@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import Rating from "../Rating/Rating";
 import Difficulty from "../Difficulty/Difficulty";
 
-const InfoBlock = ({ title, description }) => {
+const InfoBlock = ({ title, description, style="info-block-container" }) => {
   const renderContent = () => {
     if (!title) {
       return <span>{description}</span>;
@@ -34,7 +34,7 @@ const InfoBlock = ({ title, description }) => {
   };
 
   return (
-    <div className="info-block-container">
+    <div className={style}>
       {title && <span className="info-block-title">{title}: </span>}
       {renderContent()}
     </div>
@@ -44,6 +44,7 @@ const InfoBlock = ({ title, description }) => {
 InfoBlock.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string.isRequired,
+  style: PropTypes.string,
 };
 
 export default InfoBlock;

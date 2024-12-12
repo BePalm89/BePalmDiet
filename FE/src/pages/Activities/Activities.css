@@ -1,0 +1,7 @@
+.activities-container {
+    padding: var(--padding-xl);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-l);
+    justify-content: space-between;
+}

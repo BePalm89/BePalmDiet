@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import Title from "../Title/Title";
 import InfoBlock from "../InfoBlock/InfoBlock";
-const InfoPanel = ({ panelTitle, infos, variant = "primary" }) => {
+const InfoPanel = ({ panelTitle, infos, variant = "primary", style }) => {
   return (
     <div className={`panel ${variant}`}>
       <Title
@@ -18,6 +18,7 @@ const InfoPanel = ({ panelTitle, infos, variant = "primary" }) => {
             key={index}
             title={info.title}
             description={info.description}
+            style={style}
           />
         ))}
       </div>
@@ -26,14 +27,15 @@ const InfoPanel = ({ panelTitle, infos, variant = "primary" }) => {
 };
 
 InfoPanel.propTypes = {
-  panelTitle: PropTypes.string.isRequired,
-  infos: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string,
-      description: PropTypes.string,
-    })
-  ),
-  variant: PropTypes.string,
+    panelTitle: PropTypes.string.isRequired,
+    infos: PropTypes.arrayOf(
+        PropTypes.shape({
+            title: PropTypes.string,
+            description: PropTypes.string,
+        })
+    ),
+    variant: PropTypes.string,
+    style: PropTypes.string,
 };
 
 export default InfoPanel;
