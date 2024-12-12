@@ -26,11 +26,18 @@ export const getActivityById = async (req, res, next) => {
 
 export const createActivity = async (req, res, next) => {
   try {
-    const newActivity = new Activity(req.body);
+    const { name, description } = req.body;
 
-    if (req.file) {
-      newActivity.img = req.file.path;
-    }
+    const howTo = JSON.parse(req.body.howTo);
+
+    const img = req.file ? req.file.path : null;
+
+    const newActivity = new Activity({
+      name,
+      description,
+      img,
+      howTo,
+    });
 
     const activity = await newActivity.save();
 

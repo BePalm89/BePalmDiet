@@ -32,7 +32,7 @@ const Header = () => {
           onClick={() => navigate("/recipes/create")}
         />
       );
-    } else if (location.pathname.match("/activities")) {
+    } else if (location.pathname === "/activities") {
       return (
         <Button
           label="create activity"

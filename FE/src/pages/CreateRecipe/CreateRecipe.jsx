@@ -9,7 +9,7 @@ import IngredientsStep from "../../components/IngredientsStep/IngredientsStep";
 import InstructionsStep from "../../components/InstructionsStep/InstructionsStep";
 import MoreInfoStep from "../../components/MoreInfoStep/MoreInfoStep";
 import ReviewStep from "../../components/ReviewStep/ReviewStep";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const CreateRecipe = () => {
   const navigate = useNavigate();
@@ -76,8 +76,8 @@ const CreateRecipe = () => {
 
     setSteps((prevSteps) =>
       prevSteps.map((step, index) =>
-        index === activeStepIndex ? { ...step, isDone: isValid } : step
-      )
+        index === activeStepIndex ? { ...step, isDone: isValid } : step,
+      ),
     );
   };
 
@@ -98,7 +98,7 @@ const CreateRecipe = () => {
     const time = {
       cookingTime: formData.cookingTime,
       preparationTime: formData.preparationTime,
-    }
+    };
 
     body.append("name", formData.name);
     body.append("description", formData.description);

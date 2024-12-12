@@ -1,7 +1,7 @@
 .activity-card-container {
-    max-width: 400px;
-    height: 300px;
-    width: 400px;
+    max-width: 500px;
+    height: 350px;
+    width: 500px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
