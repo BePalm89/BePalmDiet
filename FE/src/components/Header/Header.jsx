@@ -33,7 +33,12 @@ const Header = () => {
         />
       );
     } else if (location.pathname.match("/activities")) {
-      return <Button label="create activity" onClick={() => navigate("/")} />;
+      return (
+        <Button
+          label="create activity"
+          onClick={() => navigate("/activities/create")}
+        />
+      );
     }
     return null;
   };

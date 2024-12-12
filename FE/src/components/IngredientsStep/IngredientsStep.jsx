@@ -145,7 +145,7 @@ const IngredientsStep = ({ onFormValid, formData, updateFormData }) => {
             {ingredientFields.length > 1 && (
               <Button
                 label="remove ingredient"
-                icon={{ name: "plus", url: "/icons/minus.png" }}
+                icon={{ name: "minus", url: "/icons/minus.png" }}
                 onClick={() => handleRemoveFields(index)}
                 variant="danger"
               />

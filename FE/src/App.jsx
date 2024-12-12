@@ -6,6 +6,7 @@ import RecipeDetails from "./pages/RecipeDetails/RecipeDetails";
 import Activities from "./pages/Activities/Activities";
 import Header from "./components/Header/Header";
 import CreateRecipe from "./pages/CreateRecipe/CreateRecipe";
+import CreateActivity from "./pages/CreateActivity/CreateActivity.jsx";
 function App() {
   return (
     <div className="app">
@@ -17,6 +18,7 @@ function App() {
           <Route path="/recipes/create" element={<CreateRecipe />}></Route>
           <Route path="/recipes/:id" element={<RecipeDetails />}></Route>
           <Route path="/activities" element={<Activities />}></Route>
+          <Route path="/activities/create" element={<CreateActivity />}></Route>
         </Routes>
       </main>
     </div>

@@ -45,6 +45,16 @@
   cursor: not-allowed;
 }
 
+.btn.outline {
+  background-color: var(--color-text-primary);
+  border: 2px solid var(--color-primary-a50);
+  color: var(--color-surface-a20);
+}
+
+.btn.outline:hover {
+  background-color: var(--color-primary-a50);
+}
+
 .btn img {
   width: 16px;
   height: 16px;
