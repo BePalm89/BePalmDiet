@@ -30,7 +30,8 @@ export const makeRequest = async ({
       res.status === 500 ||
       res.status === 409 ||
       res.status === 403 ||
-      res.status === 400
+      res.status === 400 ||
+      res.status === 404
     ) {
       if (setBanner) {
         setBanner({ isOpen: true, level: "error", message: data });

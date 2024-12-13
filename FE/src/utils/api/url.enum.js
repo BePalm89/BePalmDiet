@@ -4,4 +4,5 @@ export const API_ENDPOINT = Object.freeze({
   CREATE_RECIPE: "/recipes/create",
   GET_ALL_ACTIVITIES: "/activities",
   CREATE_ACTIVITY: "/activities/create",
+  DELETE_ACTIVITY: "/activities",
 });

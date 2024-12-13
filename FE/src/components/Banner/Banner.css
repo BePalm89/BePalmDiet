@@ -1,5 +1,5 @@
 .banner {
-    position: absolute;
+    position: fixed;
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
@@ -11,6 +11,7 @@
     align-items: start;
     border-radius: var(--border-radius-s);
     padding: var(--padding-s);
+    z-index: 1001;
 }
 
 .banner p {

@@ -1,4 +1,5 @@
 import Activity from "../models/Activity.model.js";
+import { deleteFile } from "../../utils/deleteFile.js";
 
 export const getAllActivities = async (req, res, next) => {
   try {
@@ -42,6 +43,25 @@ export const createActivity = async (req, res, next) => {
     const activity = await newActivity.save();
 
     return res.status(201).json(activity);
+  } catch (error) {
+    return next(error);
+  }
+};
+
+export const deleteActivity = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const oldActivity = await Activity.findById(id);
+
+    if (!oldActivity) {
+      return res.status(404).json("Activity not found");
+    }
+    const deletedActivity = await Activity.findByIdAndDelete(id);
+
+    deleteFile(deletedActivity.img);
+
+    return res.status(200).json(deletedActivity);
   } catch (error) {
     return next(error);
   }
