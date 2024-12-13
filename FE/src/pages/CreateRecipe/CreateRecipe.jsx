@@ -10,6 +10,9 @@ import InstructionsStep from "../../components/InstructionsStep/InstructionsStep
 import MoreInfoStep from "../../components/MoreInfoStep/MoreInfoStep";
 import ReviewStep from "../../components/ReviewStep/ReviewStep";
 import { useNavigate } from "react-router-dom";
+import { makeRequest } from "../../utils/api/makeRequest.js";
+import { API_ENDPOINT } from "../../utils/api/url.enum.js";
+import Spinner from "../../components/Spinner/Spinner.jsx";
 
 const CreateRecipe = () => {
   const navigate = useNavigate();
@@ -64,6 +67,8 @@ const CreateRecipe = () => {
     comments: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const updateFormData = (newData) => {
     setFormData((prevData) => ({
       ...prevData,
@@ -90,10 +95,8 @@ const CreateRecipe = () => {
     setActiveStepIndex((prevIndex) => prevIndex - 1);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const body = new FormData();
-
-    console.log(formData);
 
     const time = {
       cookingTime: formData.cookingTime,
@@ -111,14 +114,19 @@ const CreateRecipe = () => {
     body.append("comments", formData.comments);
     body.append("rating", formData.rating);
 
-    fetch("http://localhost:3000/api/v1/recipes/create", {
+    const { status } = await makeRequest({
+      endpoint: API_ENDPOINT.CREATE_RECIPE,
       method: "POST",
-      body: body,
-    })
-      .then((res) => res.json())
-      .then(() => {
-        navigate("/recipes");
-      });
+      isJSON: false,
+      body,
+      setLoading,
+    });
+
+    if (status === 201) {
+      navigate("/recipes");
+    } else {
+      console.log("Error creating activity");
+    }
   };
 
   const ActiveStepComponent = steps[activeStepIndex].component;
@@ -127,11 +135,15 @@ const CreateRecipe = () => {
     <div className="create-recipe-container">
       <Wizard steps={steps} />
       <div className="main-container">
-        {React.createElement(ActiveStepComponent, {
-          onFormValid: handleFormValid,
-          formData,
-          updateFormData,
-        })}
+        {loading ? (
+          <Spinner />
+        ) : (
+          React.createElement(ActiveStepComponent, {
+            onFormValid: handleFormValid,
+            formData,
+            updateFormData,
+          })
+        )}
 
         <div className="cta-container">
           <Button

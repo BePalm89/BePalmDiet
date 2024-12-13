@@ -4,32 +4,42 @@ import { useNavigate, useParams } from "react-router-dom";
 import Title from "../../components/Title/Title.jsx";
 import InfoPanel from "../../components/InfoPanel/InfoPanel.jsx";
 import Button from "../../components/Button/Button.jsx";
+import { makeRequest } from "../../utils/api/makeRequest.js";
+import { API_ENDPOINT } from "../../utils/api/url.enum.js";
+import Spinner from "../../components/Spinner/Spinner.jsx";
 
 const RecipeDetails = () => {
   let { id } = useParams();
   const [recipe, setRecipe] = useState(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/v1/recipes/${id}`)
-      .then((res) => res.json())
-      .then((res) => {
-        setRecipe(res);
-      });
+    async function getRecipeById() {
+      try {
+        const { data } = await makeRequest({
+          endpoint: `${API_ENDPOINT.GET_RECIPE_BY_ID}/${id}`,
+          setLoading,
+        });
+        setRecipe(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getRecipeById();
   }, [id]);
 
-  if (!recipe) {
-    return <div>Loading...</div>;
-  }
+  if (loading || !recipe) return <Spinner />;
 
   return (
     <>
       <div className="btn-container">
         <Button label="Go to recipes" onClick={() => navigate("/recipes")} />
       </div>
+
       <div className="recipe-detail-container">
         <div className="img-container">
-          <img src={recipe.photo} alt={recipe.name} />
+          <img src={recipe?.photo} alt={recipe?.name} />
         </div>
         <div className="recipe-detail-info">
           <Title text={recipe.name} level={1} />

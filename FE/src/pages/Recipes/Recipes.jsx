@@ -1,5 +1,10 @@
-import { useEffect, useState } from "react";
 import "./Recipe.css";
+
+import { useEffect, useState } from "react";
+
+import { makeRequest } from "../../utils/api/makeRequest.js";
+import { API_ENDPOINT } from "../../utils/api/url.enum.js";
+
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import FiltersRecipe from "../../components/FilterRecipe/FiltersRecipe";
 import Spinner from "../../components/Spinner/Spinner.jsx";
@@ -12,19 +17,19 @@ const Recipes = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    fetch("http://localhost:3000/api/v1/recipes")
-      .then((res) => res.json())
-      .then((res) => {
-        setRecipes(res);
-        setFilteredRecipes(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    async function getAllRecipes() {
+      try {
+        const { data } = await makeRequest({
+          endpoint: API_ENDPOINT.GET_ALL_RECIPES,
+          setLoading,
+        });
+        setRecipes(data);
+        setFilteredRecipes(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getAllRecipes();
   }, []);
 
   const filterRecipes = (filter) => {
