@@ -10,6 +10,7 @@ import Button from "../../components/Button/Button.jsx";
 import { makeRequest } from "../../utils/api/makeRequest.js";
 import { API_ENDPOINT } from "../../utils/api/url.enum.js";
 import Spinner from "../../components/Spinner/Spinner.jsx";
+import Banner from "../../components/Banner/Banner.jsx";
 
 const CreateActivity = () => {
   const navigate = useNavigate();
@@ -32,6 +33,11 @@ const CreateActivity = () => {
 
   const [isValidForm, setIsValidForm] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [banner, setBanner] = useState({
+    isOpen: false,
+    level: "info",
+    message: "",
+  });
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -110,13 +116,23 @@ const CreateActivity = () => {
       isJSON: false,
       body,
       setLoading,
+      setBanner,
     });
 
-    if (status === 200) {
-      navigate("/activities");
-    } else {
-      console.log("Error creating activity");
+    if (status === 201) {
+      setBanner({
+        isOpen: true,
+        level: "success",
+        message: `Activity ${activityData.name} successfully created`,
+      });
+      setTimeout(() => {
+        navigate("/activities");
+      }, 1000);
     }
+  };
+
+  const handleCloseBanner = () => {
+    setBanner({ ...banner, isOpen: false });
   };
 
   useEffect(() => {
@@ -136,6 +152,12 @@ const CreateActivity = () => {
 
   return (
     <>
+      <Banner
+        isOpen={banner.isOpen}
+        level={banner.level}
+        message={banner.message}
+        onClose={handleCloseBanner}
+      />
       {loading ? (
         <Spinner />
       ) : (

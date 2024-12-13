@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { makeRequest } from "../../utils/api/makeRequest.js";
 import { API_ENDPOINT } from "../../utils/api/url.enum.js";
 import Spinner from "../../components/Spinner/Spinner.jsx";
+import Banner from "../../components/Banner/Banner";
 
 const CreateRecipe = () => {
   const navigate = useNavigate();
@@ -68,6 +69,11 @@ const CreateRecipe = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [banner, setBanner] = useState({
+    isOpen: false,
+    level: "info",
+    message: "",
+  });
 
   const updateFormData = (newData) => {
     setFormData((prevData) => ({
@@ -87,7 +93,6 @@ const CreateRecipe = () => {
   };
 
   const handleNext = () => {
-    console.log(formData);
     setActiveStepIndex((prevIndex) => prevIndex + 1);
   };
 
@@ -120,47 +125,64 @@ const CreateRecipe = () => {
       isJSON: false,
       body,
       setLoading,
+      setBanner,
     });
 
     if (status === 201) {
-      navigate("/recipes");
-    } else {
-      console.log("Error creating activity");
+      setBanner({
+        isOpen: true,
+        level: "success",
+        message: `Recipe ${formData.name} successfully created`,
+      });
+      setTimeout(() => {
+        navigate("/recipes");
+      }, 1000);
     }
   };
 
   const ActiveStepComponent = steps[activeStepIndex].component;
+  const handleCloseBanner = () => {
+    setBanner({ ...banner, isOpen: false });
+  };
 
   return (
-    <div className="create-recipe-container">
-      <Wizard steps={steps} />
-      <div className="main-container">
-        {loading ? (
-          <Spinner />
-        ) : (
-          React.createElement(ActiveStepComponent, {
-            onFormValid: handleFormValid,
-            formData,
-            updateFormData,
-          })
-        )}
-
-        <div className="cta-container">
-          <Button
-            label="previous"
-            onClick={handlePrev}
-            disabled={activeStepIndex === 0}
-            variant="secondary"
-          />
-          {steps[activeStepIndex].key === "fifth" ? (
-            <Button label="submit" onClick={handleSubmit} />
+    <>
+      <Banner
+        isOpen={banner.isOpen}
+        level={banner.level}
+        message={banner.message}
+        onClose={handleCloseBanner}
+      />
+      <div className="create-recipe-container">
+        <Wizard steps={steps} />
+        <div className="main-container">
+          {loading ? (
+            <Spinner />
           ) : (
-            <Button label="next" onClick={handleNext} />
+            React.createElement(ActiveStepComponent, {
+              onFormValid: handleFormValid,
+              formData,
+              updateFormData,
+            })
           )}
-          {/* <Button label="next" onClick={handleNext} disabled={!isFormValid} /> */}
+
+          <div className="cta-container">
+            <Button
+              label="previous"
+              onClick={handlePrev}
+              disabled={activeStepIndex === 0}
+              variant="secondary"
+            />
+            {steps[activeStepIndex].key === "fifth" ? (
+              <Button label="submit" onClick={handleSubmit} />
+            ) : (
+              <Button label="next" onClick={handleNext} />
+            )}
+            {/* <Button label="next" onClick={handleNext} disabled={!isFormValid} /> */}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

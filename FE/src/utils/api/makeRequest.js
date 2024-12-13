@@ -7,6 +7,7 @@ export const makeRequest = async ({
   body,
   isJSON = true,
   setLoading,
+  setBanner,
 }) => {
   let headers = {};
 
@@ -23,6 +24,19 @@ export const makeRequest = async ({
     });
 
     const data = await res.json();
+
+    if (
+      res.status === 401 ||
+      res.status === 500 ||
+      res.status === 409 ||
+      res.status === 403 ||
+      res.status === 400
+    ) {
+      if (setBanner) {
+        setBanner({ isOpen: true, level: "error", message: data });
+      }
+    }
+
     return { data: data, status: res.status };
   } catch (error) {
     console.log(error);

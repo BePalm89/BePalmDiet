@@ -41,6 +41,22 @@
   --color-error-text: #ff4d4d;
   --color-error-text-hover: #ff3333;
 
+  --banner-info-bg: #cff4fc;
+  --banner-info-text: #055160;
+  --banner-info-border: #b6effb;
+
+  --banner-success-bg: #d1e7dd;
+  --banner-success-text: #0f5132;
+  --banner-success-border: #badbcc;
+
+  --banner-warning-bg: #fff3cd;
+  --banner-warning-text: #664d03;
+  --banner-warning-border: #ffecb5;
+
+  --banner-error-bg: #f8d7da;
+  --banner-error-text: #842029;
+  --banner-error-border: #f5c2c7;
+
   --font-size-xs: 12px;
   --font-size-s: 16px;
   --font-size-m: 18px;
