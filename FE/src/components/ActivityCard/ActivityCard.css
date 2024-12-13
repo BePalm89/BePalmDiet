@@ -20,3 +20,29 @@
     left: -20px;
 }
 
+.activity-info-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-m);
+}
+
+.activity-info-container p {
+    color: var(--color-surface-mixed-a40);
+}
+
+.activity-info-container ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xs);
+}
+
+.activity-info-container ul li {
+    display: flex;
+    gap: var(--gap-xs);
+    align-items: flex-start;
+}
+
+.activity-info-container ul li span:first-of-type {
+    min-width: 16px;
+    color: var(--color-primary-a0);
+}

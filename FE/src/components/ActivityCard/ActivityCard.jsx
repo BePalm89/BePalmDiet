@@ -37,9 +37,20 @@ const ActivityCard = ({ activity }) => {
       />
       <Modal
         isOpen={isModalOpen}
-        data={activity}
+        title={activity.name}
         onClose={() => setIsModalOpen(false)}
-      />
+      >
+        <div className="activity-info-container">
+          <p>{activity.description}</p>
+          <ul>
+            {activity.howTo.map((step, index) => (
+              <li key={step}>
+                <span>{`${index + 1}.`}</span> <span>{step}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Modal>
     </div>
   );
 };
