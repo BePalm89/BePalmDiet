@@ -1,17 +1,17 @@
 import "./ActivityCard.css";
-import PropTypes from "prop-types";
-import Link from "../Link/Link.jsx";
-import Modal from "../Modal/Modal.jsx";
+
 import { useState } from "react";
-import Button from "../Button/Button.jsx";
+import PropTypes from "prop-types";
+
 import { makeRequest } from "../../utils/api/makeRequest.js";
 import { API_ENDPOINT } from "../../utils/api/url.enum.js";
+
+import Link from "../Link/Link.jsx";
+import Modal from "../Modal/Modal.jsx";
+import Button from "../Button/Button.jsx";
 import Banner from "../Banner/Banner.jsx";
-import { useNavigate } from "react-router-dom";
 
 const ActivityCard = ({ activity }) => {
-  const navigate = useNavigate();
-
   const colors = [
     "var(--color-primary-a10)",
     "var(--color-primary-a20)",
@@ -94,9 +94,9 @@ const ActivityCard = ({ activity }) => {
             </ul>
           </div>
           <div className="activity-actions-container">
-            <Button label="Edit recipe" />
+            <Button label="Edit activity" />
             <Button
-              label="Delete recipe"
+              label="Delete activity"
               variant="danger"
               onClick={handleDelete}
             />

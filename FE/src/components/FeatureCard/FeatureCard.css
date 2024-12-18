@@ -1,0 +1,21 @@
+.feature-card-container {
+    background-color: var(--color-text-primary);
+    color: var(--color-surface-a0);
+    border-radius: var(--border-radius-s);
+    padding: var(--padding-s) var(--padding-s);
+    max-width: 500px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-s);
+}
+
+.feature-card-title {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-s);
+}
+
+.feature-description  {
+    color: var(--color-surface-mixed-a40);
+}

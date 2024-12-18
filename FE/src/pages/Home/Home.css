@@ -1,0 +1,6 @@
+.home-container {
+    padding: var(--padding-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-l);
+}

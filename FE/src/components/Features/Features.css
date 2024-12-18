@@ -1,0 +1,14 @@
+
+.features-title {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-s);
+}
+
+.features {
+    margin-top: var(--margin-m);
+    display: flex;
+    gap: var(--gap-xl);
+    justify-content: center;
+    flex-wrap: wrap;
+}
