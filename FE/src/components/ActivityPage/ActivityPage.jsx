@@ -97,7 +97,7 @@ const ActivityPage = ({ title, activity, btn }) => {
     const isImageValid = activityData.img !== null;
     const areHowToStepsValid = howToFields.every((step) => step.trim() !== "");
     const areHowToErrorsEmpty = errors.howTo.every((error) => error === "");
-    console.log(isValidForm);
+
     setIsValidForm(
       isNameValid &&
         isDescriptionValid &&

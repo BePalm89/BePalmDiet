@@ -27,6 +27,7 @@ const ActivityCard = ({ activity }) => {
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [banner, setBanner] = useState({
     isOpen: false,
     level: "info",
@@ -38,16 +39,17 @@ const ActivityCard = ({ activity }) => {
       endpoint: `${API_ENDPOINT.DELETE_ACTIVITY}/${activity._id}`,
       method: "DELETE",
       setBanner,
+      setLoading,
     });
 
     if (status === 200) {
+      setIsModalOpen(false);
       setBanner({
         isOpen: true,
         level: "success",
         message: `Activity ${activity.name} successfully deleted`,
       });
       setTimeout(() => {
-        setIsModalOpen(false);
         window.location.reload();
       }, 1000);
     }
@@ -107,6 +109,7 @@ const ActivityCard = ({ activity }) => {
               label="Delete activity"
               variant="danger"
               onClick={handleDelete}
+              isLoading={loading}
             />
           </div>
         </Modal>

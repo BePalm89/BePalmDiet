@@ -8,6 +8,7 @@ const Button = ({
   icon,
   variant = "primary",
   onClick,
+  isLoading,
 }) => {
   return (
     <button
@@ -16,7 +17,9 @@ const Button = ({
       disabled={disabled}
       className={`btn ${variant} ${disabled ? "disabled" : ""}`}
     >
-      {icon && <img src={icon.url} alt={icon.name}></img>} {label}
+      {icon && <img src={icon.url} alt={icon.name}></img>}
+      {isLoading && <div className="spinner-loading"></div>}
+      {label}
     </button>
   );
 };
@@ -31,6 +34,7 @@ Button.propTypes = {
   }),
   variant: PropTypes.string,
   onClick: PropTypes.func,
+  isLoading: PropTypes.bool,
 };
 
 export default Button;
