@@ -21,28 +21,6 @@ const Header = () => {
     },
   ];
 
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const renderButton = () => {
-    if (location.pathname === "/recipes") {
-      return (
-        <Button
-          label="create recipe"
-          onClick={() => navigate("/recipes/create")}
-        />
-      );
-    } else if (location.pathname === "/activities") {
-      return (
-        <Button
-          label="create activity"
-          onClick={() => navigate("/activities/create")}
-        />
-      );
-    }
-    return null;
-  };
-
   return (
     <header>
       <Logo />
@@ -57,7 +35,7 @@ const Header = () => {
           ))}
         </ul>
       </nav>
-      <div className="button-container">{renderButton()}</div>
+      <div></div>
     </header>
   );
 };

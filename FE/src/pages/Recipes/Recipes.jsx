@@ -1,15 +1,20 @@
 import "./Recipe.css";
 
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { makeRequest } from "../../utils/api/makeRequest.js";
 import { API_ENDPOINT } from "../../utils/api/url.enum.js";
 
-import RecipeCard from "../../components/RecipeCard/RecipeCard";
+import Button from "../../components/Button/Button.jsx";
 import FiltersRecipe from "../../components/FilterRecipe/FiltersRecipe";
+import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import Spinner from "../../components/Spinner/Spinner.jsx";
+import Title from "../../components/Title/Title.jsx";
 
 const Recipes = () => {
+  const navigate = useNavigate();
+
   const [recipes, setRecipes] = useState([]);
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState("all");
@@ -59,6 +64,13 @@ const Recipes = () => {
 
   return (
     <div className="recipes-page">
+      <div className="recipes-page-header">
+        <Title text="Recipes' List" level={1} />
+        <Button
+          label="Create recipe"
+          onClick={() => navigate("/recipes/create")}
+        />
+      </div>
       <FiltersRecipe
         selectedFilter={selectedFilter}
         onFilterChange={filterRecipes}

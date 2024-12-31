@@ -11,3 +11,8 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.recipes-page-header {
+  display: flex;
+  justify-content: space-between;
+}

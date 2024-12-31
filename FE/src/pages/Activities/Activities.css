@@ -5,3 +5,9 @@
     gap: var(--gap-l);
     justify-content: space-between;
 }
+
+.activities-header {
+    margin-top: var(--margin-l);
+    display: flex;
+    justify-content: space-between;
+}
