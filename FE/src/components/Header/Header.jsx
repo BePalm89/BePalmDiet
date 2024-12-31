@@ -1,9 +1,8 @@
 import "./Header.css";
 
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import Logo from "../Logo/Logo";
-import Button from "../Button/Button";
 
 const Header = () => {
   const links = [
