@@ -66,3 +66,35 @@ export const deleteActivity = async (req, res, next) => {
     return next(error);
   }
 };
+
+export const updateActivity = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const oldActivity = await Activity.findById(id);
+
+    if (!oldActivity) {
+      return res.status(404).json("Activity not found");
+    }
+
+    const modifiedActivity = new Activity(req.body);
+
+    modifiedActivity._id = id;
+
+    if (oldActivity.img && req.file) {
+      deleteFile(oldActivity.img);
+    }
+
+    if (req.file) {
+      modifiedActivity.img = req.file.path;
+    }
+
+    const updatedActivity = await Activity.findByIdAndUpdate(
+      id,
+      modifiedActivity,
+      { new: true },
+    );
+    return res.status(200).json(updatedActivity);
+  } catch (error) {
+    return next(error);
+  }
+};
