@@ -45,9 +45,7 @@ const CreateActivity = () => {
         level: "success",
         message: `Activity ${data.name} successfully created`,
       });
-      setTimeout(() => {
-        navigate("/activities");
-      }, 1000);
+      navigate("/activities");
     }
   };
 
