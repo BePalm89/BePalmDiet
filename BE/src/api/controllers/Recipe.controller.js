@@ -1,4 +1,5 @@
 import Recipe from "../models/Recipe.model.js";
+import { deleteFile } from "../../utils/deleteFile.js";
 
 export const getAllRecipes = async (req, res, next) => {
   try {
@@ -54,6 +55,26 @@ export const createNewRecipe = async (req, res, next) => {
     return res.status(201).json(recipe);
   } catch (error) {
     console.log(error);
+    return next(error);
+  }
+};
+
+export const deleteRecipe = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const oldRecipe = await Recipe.findById(id);
+
+    if (!oldRecipe) {
+      return res.status(404).json("Recipe not found");
+    }
+
+    const deletedRecipe = await Recipe.findByIdAndDelete(id);
+
+    deleteFile(deletedRecipe.photo);
+
+    return res.status(200).json(deletedRecipe);
+  } catch (error) {
     return next(error);
   }
 };
