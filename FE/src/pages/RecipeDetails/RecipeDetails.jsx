@@ -1,12 +1,15 @@
 import "./RecipeDetails.css";
+
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Title from "../../components/Title/Title.jsx";
-import InfoPanel from "../../components/InfoPanel/InfoPanel.jsx";
-import Button from "../../components/Button/Button.jsx";
-import { makeRequest } from "../../utils/api/makeRequest.js";
+
 import { API_ENDPOINT } from "../../utils/api/url.enum.js";
+import { makeRequest } from "../../utils/api/makeRequest.js";
+
+import Button from "../../components/Button/Button.jsx";
+import InfoPanel from "../../components/InfoPanel/InfoPanel.jsx";
 import Spinner from "../../components/Spinner/Spinner.jsx";
+import Title from "../../components/Title/Title.jsx";
 
 const RecipeDetails = () => {
   let { id } = useParams();
@@ -29,12 +32,25 @@ const RecipeDetails = () => {
     getRecipeById();
   }, [id]);
 
+  const deleteRecipe = async () => {
+    const { status } = await makeRequest({
+      endpoint: `${API_ENDPOINT.DELETE_RECIPE}/${id}`,
+      method: "DELETE",
+      setLoading,
+    });
+
+    if (status === 200) {
+      navigate("/recipes");
+    }
+  };
+
   if (loading || !recipe) return <Spinner />;
 
   return (
     <>
       <div className="btn-container">
         <Button label="Go to recipes" onClick={() => navigate("/recipes")} />
+        <Button label="Delete Recipe" variant="danger" onClick={deleteRecipe} />
       </div>
 
       <div className="recipe-detail-container">
