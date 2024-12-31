@@ -10,8 +10,11 @@ import Link from "../Link/Link.jsx";
 import Modal from "../Modal/Modal.jsx";
 import Button from "../Button/Button.jsx";
 import Banner from "../Banner/Banner.jsx";
+import { useNavigate } from "react-router-dom";
 
 const ActivityCard = ({ activity }) => {
+  const navigate = useNavigate();
+
   const colors = [
     "var(--color-primary-a10)",
     "var(--color-primary-a20)",
@@ -94,7 +97,12 @@ const ActivityCard = ({ activity }) => {
             </ul>
           </div>
           <div className="activity-actions-container">
-            <Button label="Edit activity" />
+            <Button
+              label="Edit activity"
+              onClick={() =>
+                navigate(`edit/${activity._id}`, { state: { activity } })
+              }
+            />
             <Button
               label="Delete activity"
               variant="danger"

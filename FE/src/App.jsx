@@ -1,13 +1,18 @@
 import "./App.css";
+
 import { Route, Routes } from "react-router-dom";
+
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer.jsx";
+
 import Home from "./pages/Home/Home";
 import Recipes from "./pages/Recipes/Recipes";
 import RecipeDetails from "./pages/RecipeDetails/RecipeDetails";
 import Activities from "./pages/Activities/Activities";
-import Header from "./components/Header/Header";
 import CreateRecipe from "./pages/CreateRecipe/CreateRecipe";
 import CreateActivity from "./pages/CreateActivity/CreateActivity.jsx";
-import Footer from "./components/Footer/Footer.jsx";
+import EditActivity from "./pages/EditActivity/EditActivity.jsx";
+
 function App() {
   return (
     <div>
@@ -23,6 +28,10 @@ function App() {
             <Route
               path="/activities/create"
               element={<CreateActivity />}
+            ></Route>
+            <Route
+              path="/activities/edit/:id"
+              element={<EditActivity />}
             ></Route>
           </Routes>
         </main>

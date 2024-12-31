@@ -1,7 +1,6 @@
-import "./CreateActivity.css";
-
+import "./EditActivity.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { makeRequest } from "../../utils/api/makeRequest.js";
 import { API_ENDPOINT } from "../../utils/api/url.enum.js";
@@ -10,18 +9,24 @@ import ActivityPage from "../../components/ActivityPage/ActivityPage.jsx";
 import Banner from "../../components/Banner/Banner.jsx";
 import Spinner from "../../components/Spinner/Spinner.jsx";
 
-const CreateActivity = () => {
+const EditActivity = () => {
+  const { state } = useLocation();
   const navigate = useNavigate();
 
-  const [loading, setLoading] = useState(false);
+  const activity = state?.activity;
 
+  const [loading, setLoading] = useState(false);
   const [banner, setBanner] = useState({
     isOpen: false,
     level: "info",
     message: "",
   });
 
-  const handleCreateActivity = async (e, activityData) => {
+  const handleCloseBanner = () => {
+    setBanner({ ...banner, isOpen: false });
+  };
+
+  const handleEditActivity = async (e, activityData) => {
     e.preventDefault();
     const body = new FormData();
 
@@ -31,15 +36,15 @@ const CreateActivity = () => {
     body.append("howTo", JSON.stringify(activityData.howTo));
 
     const { data, status } = await makeRequest({
-      endpoint: API_ENDPOINT.CREATE_ACTIVITY,
-      method: "POST",
+      endpoint: `${API_ENDPOINT.EDIT_ACTIVITY}/${activity._id}`,
+      method: "PUT",
       isJSON: false,
       body,
       setLoading,
       setBanner,
     });
 
-    if (status === 201) {
+    if (status === 200) {
       setBanner({
         isOpen: true,
         level: "success",
@@ -49,10 +54,6 @@ const CreateActivity = () => {
         navigate("/activities");
       }, 1000);
     }
-  };
-
-  const handleCloseBanner = () => {
-    setBanner({ ...banner, isOpen: false });
   };
 
   return (
@@ -68,10 +69,11 @@ const CreateActivity = () => {
       ) : (
         <div>
           <ActivityPage
-            title="Create activity"
+            title="Edit activity"
+            activity={activity}
             btn={{
-              labelBtn: "Create activity",
-              handleSubmit: handleCreateActivity,
+              labelBtn: "Edit activity",
+              handleSubmit: handleEditActivity,
             }}
           />
         </div>
@@ -80,4 +82,4 @@ const CreateActivity = () => {
   );
 };
 
-export default CreateActivity;
+export default EditActivity;

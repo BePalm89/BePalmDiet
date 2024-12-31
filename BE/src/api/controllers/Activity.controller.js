@@ -88,6 +88,10 @@ export const updateActivity = async (req, res, next) => {
       modifiedActivity.img = req.file.path;
     }
 
+    const howTo = JSON.parse(req.body.howTo);
+
+    modifiedActivity.howTo = howTo;
+
     const updatedActivity = await Activity.findByIdAndUpdate(
       id,
       modifiedActivity,

@@ -1,18 +1,4 @@
-.create-activity-container {
-    padding: var(--padding-l);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--gap-l);
-}
 
-.create-activity-form {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-m);
-}
 
 .how-to-container {
     display: flex;
