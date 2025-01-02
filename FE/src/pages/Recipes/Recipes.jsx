@@ -89,10 +89,12 @@ const Recipes = () => {
       <div className="recipes-container">
         {loading ? (
           <Spinner />
-        ) : (
+        ) : filteredRecipes.length ? (
           filteredRecipes?.map((recipe) => (
             <RecipeCard key={recipe._id} recipe={recipe} />
           ))
+        ) : (
+          <Title text="No recipe found" level={2} />
         )}
       </div>
     </div>
