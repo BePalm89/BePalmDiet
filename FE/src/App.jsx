@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer.jsx";
@@ -12,15 +12,20 @@ import Activities from "./pages/Activities/Activities";
 import CreateRecipe from "./pages/CreateRecipe/CreateRecipe";
 import CreateActivity from "./pages/CreateActivity/CreateActivity.jsx";
 import EditActivity from "./pages/EditActivity/EditActivity.jsx";
+import ComponentsPage from "./pages/ComponentsPage/ComponentsPage.jsx";
 
 function App() {
+  const location = useLocation();
+
+  const showHeaderAndFooter = location.pathname !== "/components";
   return (
     <div>
       <div className="app">
-        <Header />
+        {showHeaderAndFooter && <Header />}
         <main>
           <Routes>
             <Route path="/" element={<Home />}></Route>
+            <Route path="/components" element={<ComponentsPage />}></Route>
             <Route path="/recipes" element={<Recipes />}></Route>
             <Route path="/recipes/create" element={<CreateRecipe />}></Route>
             <Route path="/recipes/:id" element={<RecipeDetails />}></Route>
@@ -36,7 +41,7 @@ function App() {
           </Routes>
         </main>
       </div>
-      <Footer />
+      {showHeaderAndFooter && <Footer />}
     </div>
   );
 }
