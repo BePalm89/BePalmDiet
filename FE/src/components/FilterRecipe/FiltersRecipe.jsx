@@ -1,6 +1,6 @@
 import "./FiltersRecipe.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import Input from "../Input/Input";
@@ -20,9 +20,13 @@ const FiltersRecipe = ({ selectedFilter, onFilterChange, onSearchChange }) => {
     onFilterChange(filter);
   };
 
-  const handleSearch = () => {
-    onSearchChange(searchValue);
-  };
+  useEffect(() => {
+    const debounceTimer = setTimeout(() => {
+      onSearchChange(searchValue);
+    }, 500);
+
+    return () => clearTimeout(debounceTimer);
+  }, [searchValue, onSearchChange]);
 
   return (
     <div className="filters-container">
@@ -45,8 +49,7 @@ const FiltersRecipe = ({ selectedFilter, onFilterChange, onSearchChange }) => {
         onChange={(e) => {
           setSearchValue(e.target.value);
         }}
-        value=""
-        fcnIcon={handleSearch}
+        value={searchValue}
       />
     </div>
   );

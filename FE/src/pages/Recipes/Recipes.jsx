@@ -43,9 +43,19 @@ const Recipes = () => {
     let filtered = recipes;
 
     if (filter !== "all") {
-      filtered = recipes.filter(
-        (recipe) => recipe.meal.toLowerCase() === filter,
-      );
+      if (filter === "lunch" || filter === "dinner") {
+        filtered = recipes.filter(
+          (recipe) => recipe.meal.toLowerCase() === filter,
+        );
+      }
+
+      if (filter === "meat" || filter === "fish") {
+        filtered = recipes.filter((recipe) =>
+          recipe.ingredients.some(
+            (ingredient) => ingredient.type.toLowerCase() === filter,
+          ),
+        );
+      }
     }
 
     if (searchTerm) {
