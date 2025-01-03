@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import Input from "../Input/Input";
-import TextArea from "../TextArea/TextArea";
 import LayoutStep from "../LayoutStep/LayoutStep";
+import TextArea from "../TextArea/TextArea";
+
 const StartRecipeStep = ({ onFormValid, formData, updateFormData }) => {
   const [localData, setLocalFormData] = useState({
     name: formData.name || "",

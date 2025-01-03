@@ -1,6 +1,7 @@
 import "./Button.css";
 
 import PropTypes from "prop-types";
+
 const Button = ({
   label,
   type = "button",

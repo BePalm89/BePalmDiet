@@ -1,7 +1,7 @@
 import "./Banner.css";
 
-import PropTypes from "prop-types";
 import { useEffect } from "react";
+import PropTypes from "prop-types";
 
 const Banner = ({ isOpen, level, message, onClose }) => {
   useEffect(() => {

@@ -3,8 +3,8 @@ import "./RecipeCard.css";
 import PropTypes from "prop-types";
 
 import Difficulty from "../Difficulty/Difficulty";
-import Rating from "../Rating/Rating";
 import Link from "../Link/Link";
+import Rating from "../Rating/Rating";
 import Title from "../Title/Title";
 
 const RecipeCard = ({ recipe }) => {

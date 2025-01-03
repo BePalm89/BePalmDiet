@@ -1,7 +1,9 @@
 import "./HeroBox.css";
-import Title from "../Title/Title.jsx";
-import Button from "../Button/Button.jsx";
+
 import { useNavigate } from "react-router-dom";
+
+import Button from "../Button/Button.jsx";
+import Title from "../Title/Title.jsx";
 
 const HeroBox = () => {
   const navigate = useNavigate();

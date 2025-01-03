@@ -2,10 +2,10 @@ import "./InfoBlock.css";
 
 import PropTypes from "prop-types";
 
-import Rating from "../Rating/Rating";
 import Difficulty from "../Difficulty/Difficulty";
+import Rating from "../Rating/Rating";
 
-const InfoBlock = ({ title, description, style="info-block-container" }) => {
+const InfoBlock = ({ title, description, style = "info-block-container" }) => {
   const renderContent = () => {
     if (!title) {
       return <span>{description}</span>;

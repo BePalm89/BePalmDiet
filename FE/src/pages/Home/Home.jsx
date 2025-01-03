@@ -1,6 +1,7 @@
 import "./Home.css";
-import HeroBox from "../../components/HeroBox/HeroBox.jsx";
+
 import Features from "../../components/Features/Features.jsx";
+import HeroBox from "../../components/HeroBox/HeroBox.jsx";
 
 const Home = () => {
   return (

@@ -3,10 +3,11 @@ import "./MoreInfoStep.css";
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-import LayoutStep from "../LayoutStep/LayoutStep";
 import Input from "../Input/Input";
+import LayoutStep from "../LayoutStep/LayoutStep";
 import Select from "../Select/Select";
 import TextArea from "../TextArea/TextArea";
+
 const MoreInfoStep = ({ onFormValid, formData, updateFormData }) => {
   const [moreInfoData, setMoreInfoData] = useState({
     difficulty: formData.difficulty || "",

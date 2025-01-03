@@ -1,19 +1,20 @@
 import "./CreateRecipe.css";
 
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import Wizard from "../../components/Wizard/Wizard";
+import { makeRequest } from "../../utils/api/makeRequest.js";
+import { API_ENDPOINT } from "../../utils/api/url.enum.js";
+
+import Banner from "../../components/Banner/Banner";
 import Button from "../../components/Button/Button";
-import StartRecipeStep from "../../components/StartRecipeStep/StartRecipeStep";
 import IngredientsStep from "../../components/IngredientsStep/IngredientsStep";
 import InstructionsStep from "../../components/InstructionsStep/InstructionsStep";
 import MoreInfoStep from "../../components/MoreInfoStep/MoreInfoStep";
 import ReviewStep from "../../components/ReviewStep/ReviewStep";
-import { useNavigate } from "react-router-dom";
-import { makeRequest } from "../../utils/api/makeRequest.js";
-import { API_ENDPOINT } from "../../utils/api/url.enum.js";
 import Spinner from "../../components/Spinner/Spinner.jsx";
-import Banner from "../../components/Banner/Banner";
+import StartRecipeStep from "../../components/StartRecipeStep/StartRecipeStep";
+import Wizard from "../../components/Wizard/Wizard";
 
 const CreateRecipe = () => {
   const navigate = useNavigate();

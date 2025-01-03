@@ -2,6 +2,7 @@ import "./Input.css";
 
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+
 const Input = ({
   label,
   id,

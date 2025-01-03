@@ -1,7 +1,7 @@
 import "./ActivityPage.css";
 
-import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 import Input from "../Input/Input.jsx";
 import TextArea from "../TextArea/TextArea.jsx";

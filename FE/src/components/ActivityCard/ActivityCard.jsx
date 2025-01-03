@@ -1,6 +1,7 @@
 import "./ActivityCard.css";
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { makeRequest } from "../../utils/api/makeRequest.js";
@@ -10,7 +11,6 @@ import Link from "../Link/Link.jsx";
 import Modal from "../Modal/Modal.jsx";
 import Button from "../Button/Button.jsx";
 import Banner from "../Banner/Banner.jsx";
-import { useNavigate } from "react-router-dom";
 
 const ActivityCard = ({ activity }) => {
   const navigate = useNavigate();

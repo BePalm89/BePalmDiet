@@ -5,10 +5,11 @@ import PropTypes from "prop-types";
 
 import Button from "../Button/Button";
 import Input from "../Input/Input";
+import LayoutStep from "../LayoutStep/LayoutStep";
 import Select from "../Select/Select";
 import TextArea from "../TextArea/TextArea";
-import LayoutStep from "../LayoutStep/LayoutStep";
 import Title from "../Title/Title";
+
 const IngredientsStep = ({ onFormValid, formData, updateFormData }) => {
   const [ingredientFields, setIngredientFields] = useState([
     { name: "", amount: "", type: "", unit: "", comments: "" },

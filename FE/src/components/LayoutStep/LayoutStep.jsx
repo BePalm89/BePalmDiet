@@ -2,8 +2,8 @@ import "./LayoutStep.css";
 
 import PropTypes from "prop-types";
 
-import Title from "../Title/Title";
 import Image from "../Image/Image";
+import Title from "../Title/Title";
 
 const LayoutStep = ({
   title,

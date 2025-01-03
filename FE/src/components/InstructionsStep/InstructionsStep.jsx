@@ -3,10 +3,10 @@ import "./InstructionsStep.css";
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-import Input from "../Input/Input";
-import TextArea from "../TextArea/TextArea";
 import Button from "../Button/Button";
+import Input from "../Input/Input";
 import LayoutStep from "../LayoutStep/LayoutStep";
+import TextArea from "../TextArea/TextArea";
 import Title from "../Title/Title";
 
 const InstructionsStep = ({ onFormValid, formData, updateFormData }) => {

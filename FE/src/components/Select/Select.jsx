@@ -2,6 +2,7 @@ import "./Select.css";
 
 import { useState } from "react";
 import PropTypes from "prop-types";
+
 const Select = ({
   label,
   options,
@@ -79,7 +80,7 @@ Select.propTypes = {
       label: PropTypes.string.isRequired,
       value: PropTypes.string.isRequired,
       icon: PropTypes.string,
-    })
+    }),
   ),
   required: PropTypes.bool,
   id: PropTypes.string.isRequired,

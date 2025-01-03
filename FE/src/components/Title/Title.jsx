@@ -1,6 +1,7 @@
 import "./Title.css";
 
 import PropTypes from "prop-types";
+
 const Title = ({
   text,
   level,

@@ -1,6 +1,7 @@
 import "./Features.css";
-import Title from "../Title/Title.jsx";
+
 import FeatureCard from "../FeatureCard/FeatureCard.jsx";
+import Title from "../Title/Title.jsx";
 
 const Features = () => {
   const features = [

@@ -1,14 +1,13 @@
 import "./ReviewStep.css";
 
+import { useEffect } from "react";
 import PropTypes from "prop-types";
 
-import Title from "../Title/Title";
 import InfoPanel from "../InfoPanel/InfoPanel";
-import { useEffect } from "react";
+import Title from "../Title/Title";
 
-
-const ReviewStep = ({ onFormValid, formData}) => {
-    console.log(formData);
+const ReviewStep = ({ onFormValid, formData }) => {
+  console.log(formData);
   useEffect(() => {
     onFormValid(true);
   }, []);
@@ -74,7 +73,7 @@ const ReviewStep = ({ onFormValid, formData}) => {
       <InfoPanel
         panelTitle="Ingredients"
         infos={formData.ingredients.map((ingredient) => ({
-          description: `• ${ingredient.amount ?? ''} ${ingredient.unit} ${
+          description: `• ${ingredient.amount ?? ""} ${ingredient.unit} ${
             ingredient.name
           }${ingredient.comments ? ` (${ingredient.comments})` : ""}`,
         }))}

@@ -1,6 +1,7 @@
 import "./Difficulty.css";
 
 import PropTypes from "prop-types";
+
 const Difficulty = ({ difficulty, variant = "absolute" }) => {
   const difficultyMap = {
     easy: 1,
