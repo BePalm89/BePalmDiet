@@ -3,6 +3,12 @@ import "./ComponentsPage.css";
 import Banner from "../../components/Banner/Banner.jsx";
 import Button from "../../components/Button/Button.jsx";
 import Title from "../../components/Title/Title.jsx";
+import Difficulty from "../../components/Difficulty/Difficulty.jsx";
+import Footer from "../../components/Footer/Footer.jsx";
+import Header from "../../components/Header/Header.jsx";
+import Image from "../../components/Image/Image.jsx";
+import InfoBlock from "../../components/InfoBlock/InfoBlock.jsx";
+import InfoPanel from "../../components/InfoPanel/InfoPanel.jsx";
 
 const ComponentsPage = () => {
   return (
@@ -33,25 +39,87 @@ const ComponentsPage = () => {
           isOpen={true}
           level="info"
           message="This is a info banner"
-          onClose={() => console.log("clicked")}
+          onClose={() => {}}
         />
         <Banner
           isOpen={true}
           level="success"
           message="This is a success banner"
-          onClose={() => console.log("clicked")}
+          onClose={() => {}}
         />
         <Banner
           isOpen={true}
           level="warning"
           message="This is a warning banner"
-          onClose={() => console.log("clicked")}
+          onClose={() => {}}
         />
         <Banner
           isOpen={true}
           level="error"
           message="This is a error banner"
-          onClose={() => console.log("clicked")}
+          onClose={() => {}}
+        />
+      </div>
+      <div className="difficulty-container">
+        <Title text="Difficulty:" level={2} />
+        <Difficulty difficulty="easy" variant="relative" />
+        <Difficulty difficulty="medium" variant="relative" />
+        <Difficulty difficulty="hard" variant="relative" />
+      </div>
+      <div className="footer-container">
+        <Title text="Footer:" level={2} />
+        <Footer />
+      </div>
+      <div className="header-container">
+        <Title text="Header:" level={2} />
+        <Header />
+      </div>
+      <div className="image-container">
+        <Title text="Image:" level={2} />
+        <Image
+          title="title image"
+          description="description image"
+          urlPhoto="/images/more-info.jpg"
+        />
+      </div>
+      <div className="info-container">
+        <Title text="Info block:" level={2} />
+        <InfoBlock
+          title="info block title"
+          description="info block description"
+        />
+        <InfoBlock description="info block just description" />
+        <InfoBlock title="difficulty" description="hard" />
+        <InfoBlock title="rating" description="5" />
+      </div>
+      <div className="info-panel-container">
+        <Title text="Info panel" level={2} />
+        <InfoPanel
+          panelTitle="Preparation time"
+          infos={[
+            {
+              title: "Preparation",
+              description: `10 minutes`,
+            },
+            {
+              title: "Cooking",
+              description: `10 minutes`,
+            },
+          ]}
+        />
+        <InfoPanel
+          panelTitle="Preparation time"
+          infos={[
+            {
+              title: "Preparation",
+              description: `10 minutes`,
+            },
+            {
+              title: "Cooking",
+              description: `10 minutes`,
+            },
+          ]}
+          variant="secondary"
         />
       </div>
     </div>

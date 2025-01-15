@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     gap: var(--gap-m);
-    width: max-content;
 }
 
 .component-container {
@@ -18,4 +17,32 @@
     display: flex;
     flex-direction: column;
     margin-top: var(--margin-m);
+}
+
+.difficulty-container .relative {
+    margin-top: var(--margin-m);
+    width: max-content;
+    display: flex;
+    gap: var(--gap-s);
+}
+
+.difficulty-container .relative #chef-hat {
+    background-color: var(--color-accent-a40);
+}
+
+.footer-container, .header-container, .image-container, .info-panel-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-m);
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-m);
+    margin-bottom: var(--margin-m);
+}
+
+.info-container .relative #chef-hat {
+    background-color: var(--color-text-primary);
 }
